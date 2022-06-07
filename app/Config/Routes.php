@@ -35,14 +35,20 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
-$routes->get('/login', 'Auth::login');
-$routes->get('/logout', 'Auth::logout');
+$routes->get('/',          'Home::index');
+$routes->get('/login',     'Auth::login');
+$routes->get('/logout',    'Auth::logout');
 $routes->get('/dashboard', 'Dashboard::index');
-$routes->get('/surat/pengajuan', 'Surat::index');
-$routes->get('/surat/masuk', 'Surat::index');
-$routes->get('/surat/keluar', 'Surat::index');
+$routes->get('/galery/profil_kelurahan', 'Galery::profil_kelurahan');
+$routes->get('galery/edit_profil/(:num)', 'Galery::edit_profil/$1');
+$routes->post('/galery/edit_profil/(:num)', 'Galery::edit_profil/$1');
+
+$routes->get('/surat/keluar',     'Surat::index');
+$routes->get('/surat/pengajuan',  'Surat::index');
 $routes->get('/surat/keterangan', 'Surat::index');
+$routes->get('/surat/surat_masuk','Surat::surat_masuk');
+$routes->get('/surat/tambah_surat_masuk','Surat::tambah_surat_masuk');
+
 $routes->post('/login', 'Auth::login');
 
 /*

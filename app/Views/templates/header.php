@@ -53,7 +53,7 @@
 									// $data = $this->db->get_where('user', ['id_user' => $this->session->userdata('id_user')])->row_array();
 									
 									?>
-									<?= ucfirst($user['username']); ?>
+									<?= ucfirst( $user['username']); ?>
 									<b class="caret"></b>
 								</span>
 							</a>

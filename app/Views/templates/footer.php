@@ -77,7 +77,7 @@
 <!-- Material Dashboard javascript methods -->
 <script src="/assets/js/material-dashboard.js?v=1.2.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="/assets/jquery-ui-1.12.1/jquery-ui.js"></script>
+<script src="assets/jquery-ui-1.12.1/jquery-ui.js"></script>
 
 <script src="/assets/js/demo.js"></script>
 
@@ -182,7 +182,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-
+<?php if(isset($masuk)) : ?>
 <script>
     var ctx = document.getElementById('myCharts').getContext('2d');
     var chart = new Chart(ctx, {
@@ -341,6 +341,7 @@
         }
     });
 </script>
+<?php endif ?>
 
 <!-- <script>
     var ctx = document.getElementById('myChart').getContext('2d');

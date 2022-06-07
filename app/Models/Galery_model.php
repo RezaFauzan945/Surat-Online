@@ -8,5 +8,6 @@ class Galery_model extends Model
 {
     protected $table = 'gallery';
     protected $primaryKey = 'id' ;
-    protected $useTimestamps = true;
+    protected $allowedFields = ['profile','s_kelurahan','s_lpm','s_linmas','s_pemuda','k_rtrw'];
+
 }
