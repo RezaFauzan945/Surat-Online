@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+// defined('BASEPATH') or exit('No direct script access allowed');
+
 use App\Models\Galery_model;
 use \App\Models\GaleryModel;  
 class Home extends BaseController

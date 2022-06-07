@@ -117,7 +117,7 @@
                                             </span>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Username</label>
-                                                <input type="text" class="form-control" id="username" name="username">
+                                                <input type="text" class="form-control" id="username" name="username" required>
                                             </div>
                                         </div>
                                         <!-- <div class="input-group">
@@ -135,7 +135,7 @@
                                             </span>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Password</label>
-                                                <input type="password" class="form-control" id="password" name="password">
+                                                <input type="password" class="form-control" id="password" name="password" required>
                                             </div>
                                         </div>
                                     </div>

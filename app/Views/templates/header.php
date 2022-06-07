@@ -3,29 +3,29 @@
 
 <head>
 	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="<?= base_url() ?>/assets/img/apple-icon.png" />
-	<link rel="icon" type="image/png" href="<?= base_url() ?>/assets/img/favicon.png" />
+	<link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png" />
+	<link rel="icon" type="image/png" href="/assets/img/favicon.png" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title><?= $title; ?></title>
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 	<meta name="viewport" content="width=device-width" />
 	<!-- Bootstrap core CSS     -->
-	<link href="<?= base_url() ?>/assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
 	<!--  Material Dashboard CSS    -->
-	<link href="<?= base_url() ?>/assets/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
+	<link href="/assets/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
 	<!--  CSS for Demo Purpose, don't include it in your project     -->
-	<link href="<?= base_url() ?>/assets/css/demo.css" rel="stylesheet" />
+	<link href="/assets/css/demo.css" rel="stylesheet" />
 	<!--     Fonts and icons     -->
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="<?= base_url();?>assets/jquery-ui-1.12.1/jquery-ui.css">
+	<link rel="stylesheet" href="/assets/jquery-ui-1.12.1/jquery-ui.css">
 
 </head>
 
 <body>
 	<div class="wrapper">
-		<div class="sidebar" data-active-color="orange" data-background-color="black" data-image="<?= base_url() ?>/assets/img/sidebar-1.jpg">
+		<div class="sidebar" data-active-color="orange" data-background-color="black" data-image="/assets/img/sidebar-1.jpg">
 			<!--
         Tip 1: You can change the color of active element of the sidebar using: data-active-color="purple | blue | green | orange | red | rose"
         Tip 2: you can also add an image using data-image tag
@@ -40,20 +40,20 @@
 				</a>
 			</div>
 			<div class="sidebar-wrapper">
-				<?php if ($this->session->userdata('id_user') == TRUE) : ?>
+				<?php if (session()->get('id_user') == TRUE) : ?>
 					<div class="user">
 						<div class="photo">
-							<img src="<?= base_url() ?>/assets/img/default-avatar.png" />
+							<img src="/assets/img/default-avatar.png" />
 						</div>
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" class="collapsed">
 								<span>
 									<?php
 
-									$data = $this->db->get_where('user', ['id_user' => $this->session->userdata('id_user')])->row_array();
-
+									// $data = $this->db->get_where('user', ['id_user' => $this->session->userdata('id_user')])->row_array();
+									
 									?>
-									<?= ucfirst($data['username']); ?>
+									<?= ucfirst($user['username']); ?>
 									<b class="caret"></b>
 								</span>
 							</a>
@@ -67,7 +67,7 @@
                                         </a>
                                     </li> -->
 									<li>
-										<a href="<?= base_url() ?>user/edit/<?= $this->session->userdata('id_user'); ?>">
+										<a href="/user/edit/<?= session()->get('id_user'); ?>">
 											<span class="sidebar-mini">EP</span>
 											<span class="sidebar-normal">Edit Profile</span>
 										</a>
@@ -90,7 +90,7 @@
                         <?= 'active'; ?>
 						<?php endif; ?>
 						">
-						<a href="<?= base_url('dashboard') ?>">
+						<a href="/dashboard">
 							<i class="material-icons">dashboard</i>
 							<p>Dashboard</p>
 						</a>
@@ -120,7 +120,7 @@
                                     <?= 'active'; ?>
                                 <?php endif; ?>
                                 ">
-									<a href="<?= base_url() ?>surat/pengajuan">
+									<a href="/surat/pengajuan">
 										<span class="sidebar-mini">M</span>
 										<span class="sidebar-normal">Pengajuan Surat</span>
 									</a>
@@ -130,7 +130,7 @@
                                     <?= 'active'; ?>
                                 <?php endif; ?>
                                 ">
-									<a href="<?= base_url() ?>surat/surat_masuk">
+									<a href="/surat/surat_masuk">
 										<span class="sidebar-mini">M</span>
 										<span class="sidebar-normal">Surat Masuk</span>
 									</a>
@@ -140,7 +140,7 @@
                                     <?= 'active'; ?>
                                 <?php endif; ?>
                                 ">
-									<a href="<?= base_url() ?>surat/surat_keluar">
+									<a href="/surat/surat_keluar">
 										<span class="sidebar-mini">K</span>
 										<span class="sidebar-normal">Surat Keluar</span>
 									</a>
@@ -150,7 +150,7 @@
                                     <?= 'active'; ?>
                                 <?php endif; ?>
                                 ">
-									<a href="<?= base_url() ?>surat/surat_keterangan">
+									<a href="/surat/surat_keterangan">
 										<span class="sidebar-mini">SK</span>
 										<span class="sidebar-normal">Surat Keterangan</span>
 									</a>
@@ -184,7 +184,7 @@
                                     <?= 'active'; ?>
                                 <?php endif; ?>
                                 ">
-									<a href="<?= base_url() ?>galery/profil_kelurahan">
+									<a href="/galery/profil_kelurahan">
 										<span class="sidebar-mini">RF</span>
 										<span class="sidebar-normal">Profil Kelurahan</span>
 									</a>
@@ -194,7 +194,7 @@
                                     <?= 'active'; ?>
                                 <?php endif; ?>
                                 ">
-									<a href="<?= base_url() ?>galery/s_kelurahan">
+									<a href="/galery/s_kelurahan">
 										<span class="sidebar-mini">EF</span>
 										<span class="sidebar-normal">Struktur Kelurahan</span>
 									</a>
@@ -235,13 +235,13 @@
                         <?= 'active'; ?>
 						<?php endif; ?>
 						">
-						<a href="<?= base_url('penduduk') ?>">
+						<a href="/penduduk">
 							<i class="material-icons">assignment_ind</i>
 							<p>Penduduk</p>
 						</a>
 					</li>
 
-					<?php if ($this->session->userdata('level') == 'administrator') : ?>
+					<?php if (session()->get('level') == 'administrator') : ?>
 
 
 						<li class="
@@ -249,7 +249,7 @@
                             <?= 'active'; ?>
                         <?php endif; ?>
                             ">
-							<a href="<?= base_url() ?>pegawai">
+							<a href="/pegawai">
 								<i class="material-icons">supervised_user_circle</i>
 								<p>Management Pegawai</p>
 							</a>
@@ -260,7 +260,7 @@
                             <?= 'active'; ?>
                         <?php endif; ?>
                             ">
-							<a href="<?= base_url() ?>user">
+							<a href="/user">
 								<i class="material-icons">people</i>
 								<p>Management User</p>
 							</a>
@@ -268,10 +268,10 @@
 
 					<?php endif; ?>
 
-					<?php if ($this->session->userdata('id_user') == TRUE) : ?>
+					<?php if (session()->get('id_user') == TRUE) : ?>
 
 						<li>
-							<a href="<?= base_url() ?>logout">
+							<a href="/logout">
 								<i class="material-icons">logout</i>
 								<p>Logout</p>
 							</a>
@@ -280,7 +280,7 @@
 					<?php else : ?>
 
 						<li>
-							<a href="<?= base_url() ?>auth/login">
+							<a href="/auth/login">
 								<i class="material-icons">login</i>
 								<p>Login</p>
 							</a>
@@ -317,7 +317,7 @@
 
 
 							<li>
-								<a href="<?= base_url() ?>auth/login" class="dropdown-toggle">
+								<a href="/auth/login" class="dropdown-toggle">
 									<i class="material-icons">login</i>
 									<p class="hidden-lg hidden-md">Login</p>
 								</a>

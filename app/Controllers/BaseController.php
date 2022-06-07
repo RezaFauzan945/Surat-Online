@@ -2,6 +2,10 @@
 
 namespace App\Controllers;
 
+use App\Models\Auth_model;
+use App\Models\SuratKeluar_model;
+use App\Models\SuratKeterangan_model;
+use App\Models\SuratMasuk_model;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -50,5 +54,9 @@ abstract class BaseController extends Controller
 
         // E.g.: $this->session = \Config\Services::session();
         session();
+        $this->auth = new Auth_model();
+        $this->suratMasuk = new SuratMasuk_model();
+        $this->suratKeluar = new SuratKeluar_model();
+        $this->suratKeterangan = new SuratKeterangan_model();
     }
 }

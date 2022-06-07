@@ -2,11 +2,12 @@
 
 namespace App\Controllers;
 
+// defined('BASEPATH') or exit('No direct script access allowed');
+
 use App\Models\Auth_model;
 
 class Auth extends BaseController
 {
-    protected $auth;
     function __construct()
     {
         // parent::__construct();
@@ -47,12 +48,13 @@ class Auth extends BaseController
                 $cek_akun = $this->auth->where($where)->first();
                 $id_user = $cek_akun["id_user"];
                 $level = $cek_akun["level"];
-                $data_session = array(
+                $data_session = [
                     'id_user' => $id_user,
                     'level' => $level
-                );
+                ];
+                
                 session()->set($data_session);
-                redirect()->to('/dashboard');
+                return redirect()->to('/dashboard');
             }
         }
         
@@ -89,11 +91,12 @@ class Auth extends BaseController
         // }
     }
 
-    // public function logout()
-    // {
-    //     $this->session->sess_destroy();
-    //     redirect(base_url('auth/login'));
-    // }
+    public function logout()
+    {
+        session()->destroy();
+        session()->setFlashdata('gagal','Berhasil Logout');
+        return redirect()->to('/login');
+    }
 
     private function _sendEmail($token, $type)
     {

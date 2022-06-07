@@ -94,7 +94,7 @@
                     </div>
                     <div class="card-content">
                         <p class="category">Surat Masuk</p>
-                        <h3 class="card-title"><?= $this->db->get('surat_masuk')->num_rows(); ?></h3>
+                        <h3 class="card-title"><?= $jumlah_surat_masuk ?></h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -111,7 +111,7 @@
                     </div>
                     <div class="card-content">
                         <p class="category">Surat Keluar</p>
-                        <h3 class="card-title"><?= $this->db->get('surat_keluar')->num_rows(); ?></h3>
+                        <h3 class="card-title"><?= $jumlah_surat_keluar ?></h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -127,7 +127,7 @@
                     </div>
                     <div class="card-content">
                         <p class="category">Surat Keterangan</p>
-                        <h3 class="card-title"><?= $this->db->get('surat_keterangan')->num_rows(); ?></h3>
+                        <h3 class="card-title"><?= $jumlah_surat_keterangan ?></h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -143,7 +143,7 @@
                     </div>
                     <div class="card-content">
                         <p class="category">User</p>
-                        <h3 class="card-title"><?= $this->db->get('user')->num_rows(); ?></h3>
+                        <h3 class="card-title"><?= $jumlah_user ?></h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
