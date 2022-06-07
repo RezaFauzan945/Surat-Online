@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controllers;
+
+use App\Models\Galery_model;
 use \App\Models\GaleryModel;  
 class Home extends BaseController
 {
@@ -9,7 +11,7 @@ class Home extends BaseController
     {
         // parent::__construct();
         // $this->load->model('galery_model','galery');
-        $this->galeryModel = new GaleryModel();
+        $this->galeryModel = new Galery_model();
 
         // $this->load->helper(array('form', 'url','Cookie', 'String'));
         // $this->load->library('form_validation');
