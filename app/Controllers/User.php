@@ -86,6 +86,7 @@ class User extends BaseController
     {
         $data = [
             'user' => $this->auth->where('id_user', session()->get('id_user'))->first(),
+            'userdata' => $this->auth->where('id_user', $id)->first(),
             'title' => 'Management User',
             'sub_title' => 'Edit User',
             'validation' => \Config\Services::validation(),
@@ -122,7 +123,13 @@ class User extends BaseController
             $this->User_model->save($data);
 
             session()->setFlashdata('success', 'Berhasil DiUpdate!');
-            return redirect()->to('/user/edit'.$id);
+            return redirect()->to('/user/edit/'.$id);
         }
+    }
+    public function delete($id)
+    {
+        $this->User_model->delete($id);
+        session()->setFlashdata('success', 'Berhasil Dihapus!');
+        return redirect()->to('/user')->withInput();
     }
 }

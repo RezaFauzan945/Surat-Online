@@ -23,7 +23,7 @@
                             <?php endif; ?>
                             <div class="form-group">
                                 <label class="label-control">Username</label>
-                                <input class="form-control" name="username" id="username" type="text" value="<?= $user['username'] ?>" />
+                                <input class="form-control" name="username" id="username" type="text" value="<?= $userdata['username'] ?>" />
                             </div>
                             <?php if ($validation->getError('username')) : ?>
                                 <div class='text text-danger mt-2'>
@@ -33,7 +33,7 @@
 
                             <div class="form-group">
                                 <label class="label-control">Password</label>
-                                <input class="form-control" name="password" id="password" type="password" value="<?= $user['password'] ?>" />
+                                <input class="form-control" name="password" id="password" type="password" value="<?= $userdata['password'] ?>" />
                             </div>
                             <?php if ($validation->getError('password')) : ?>
                                 <div class='text text-danger mt-2'>
@@ -43,7 +43,7 @@
 
                             <div class="form-group">
                                 <label class="label-control">Konfirmasi Password</label>
-                                <input class="form-control" name="password2" id="password2" type="password" value="<?= $user['password'] ?>" />
+                                <input class="form-control" name="password2" id="password2" type="password" value="<?= $userdata['password'] ?>" />
                             </div>
                             <?php if ($validation->getError('password2')) : ?>
                                 <div class='text text-danger mt-2'>
@@ -56,7 +56,7 @@
                                     <label class="label-control">Hak Akses</label>
                                     <select class="selectpicker" name="level" id="level" data-style="btn btn-primary btn-round" title="Single Select" data-size="7">
                                         <option disabled selected>Pilih Hak Akses</option>
-                                        <?php if ($user['level'] == 'administrator') : ?>
+                                        <?php if ($userdata['level'] == 'administrator') : ?>
                                             <option selected='true' value="administrator">Administrator</option>
                                             <option value="pegawai">Pegawai</option>
                                         <?php else : ?>

@@ -82,6 +82,8 @@
                                         </div>
 
                                         <form method="post" action="/user/hapus/<?= $key['id_user']; ?>">
+                                            <?= csrf_field() ?>
+                                            <input type="hidden" name="_method" value="DELETE">
                                             <div class="modal-body text-center">
                                                 <h5>Apakah anda yakin untuk menghapus user? </h5>
                                             </div>
