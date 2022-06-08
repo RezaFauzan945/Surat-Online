@@ -113,12 +113,12 @@ class Galery extends BaseController
             //     $old_sk = $data['galery']['s_kelurahan'];
             //     unlink('assets/galery/' . $old_sk);
             // }
-            $upload_sk->move('assets/galery/');
             $s_kelurahan = $upload_sk->getName();
             $this->galeryModel->save([
                 'id' => $id,
                 's_kelurahan' => $s_kelurahan,
             ]);
+            $upload_sk->move('assets/galery/');
             session()->setFlashdata('success', 'Berhasil Di Update!');
             return redirect()->to('galery/edit_s_kelurahan/'. $id);
         }

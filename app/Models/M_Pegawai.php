@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class M_Pegawai extends Model
 {
     protected $table = 'pegawai';
-    protected $primaryKey = 'id' ;
+    protected $primaryKey = 'id_pegawai' ;
     protected $allowedFields = [        
         'id_pegawai',
         'nama',

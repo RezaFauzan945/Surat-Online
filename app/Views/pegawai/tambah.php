@@ -76,7 +76,6 @@
                                 <label class="label-control">Foto</label>
                                 <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                                     <div class="fileinput-new thumbnail">
-                                        <!-- <img src="<?= base_url() ?>assets/save.png" alt="..."> -->
                                     </div>
                                     <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                     <div>
@@ -90,12 +89,13 @@
                                     </div>
                                 </div>
                             </div>
+
                             <?php if ($validation->getError('foto')) : ?>
                                     <div class='text text-danger mt-2'>
                                         <?= $error = $validation->getError('foto'); ?>
                                     </div>
                             <?php endif ?>
-
+                            
                             <div class="form-group">
                                 <label class="label-control">No. Hp</label>
                                 <input class="form-control" name="no_hp" id="no_hp" type="text" value="<?= old('no_hp'); ?>" />
@@ -125,6 +125,7 @@
                                         <?= $error = $validation->getError('pendidikan'); ?>
                                     </div>
                             <?php endif ?>
+
 
                             <div class="category form-category">
                                 <div class="form-footer text-right">

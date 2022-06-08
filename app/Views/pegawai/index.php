@@ -101,6 +101,8 @@
                                         </div>
 
                                         <form method="post" action="/pegawai/hapus/<?= $key['id_pegawai']; ?>">
+                                            <?= csrf_field() ?>
+                                            <input type="hidden" name="_method" value="DELETE">
                                             <div class="modal-body text-center">
                                                 <h5>Apakah anda yakin untuk menghapus pegawai? </h5>
                                             </div>
@@ -129,7 +131,7 @@
                                             <div class="instruction">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <img width="100%" height="450px;" src="/uploads/foto/<?= $key["foto"]?>">
+                                                        <img width="100%" height="450px;" src="/assets/uploads/foto/<?= $key["foto"]?>">
                                                     </div>
 
                                                 </div>

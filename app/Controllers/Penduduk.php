@@ -123,18 +123,18 @@ class Penduduk extends BaseController
         }else{
             $data = [
                 'nik'       => $this->request->getPost('nik'),
-                'nama'      => $this->request->getPost("nama",) ,
-                'tmpt_lhr'  => $this->request->getPost("tmpt_lhr",) ,
-                'tgl_lhr'   => $this->request->getPost("tgl_lhr",) ,
-                'alamat'    => $this->request->getPost("alamat",) ,
-                'no_hp'     => $this->request->getPost("no_hp",) ,
-                'pekerjaan' => $this->request->getPost("pekerjaan",) ,
-                'rw'        => $this->request->getPost("rw",) ,
-                'rt'        => $this->request->getPost("rt",)
+                'nama'      => $this->request->getPost("nama") ,
+                'tmpt_lhr'  => $this->request->getPost("tmpt_lhr") ,
+                'tgl_lhr'   => $this->request->getPost("tgl_lhr") ,
+                'alamat'    => $this->request->getPost("alamat") ,
+                'no_hp'     => $this->request->getPost("no_hp") ,
+                'pekerjaan' => $this->request->getPost("pekerjaan") ,
+                'rw'        => $this->request->getPost("rw") ,
+                'rt'        => $this->request->getPost("rt")
             ];
             $this->M_Penduduk->save($data);
             session()->setFlashdata('success', 'Berhasil Diupdate!');
-            return redirect()->to('penduduk/edit/'.$nik);
+            return redirect()->to('pegawai/edit/'.$nik);
 
         }
     }
