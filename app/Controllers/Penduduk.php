@@ -33,13 +33,6 @@ class Penduduk extends BaseController
         echo view('templates/footer');
     }
 
-    public function delete($nik)
-    {
-        $this->M_Penduduk->delete($nik);
-        session()->setFlashdata('success', 'Berhasil Dihapus!');
-        return redirect()->to('/penduduk')->withInput();
-    }
-
     public function tambah()
     {
        
@@ -52,6 +45,20 @@ class Penduduk extends BaseController
             echo view('templates/header', $data);
             echo view('penduduk/tambah');
             echo view('templates/footer');
+    }
+
+    public function edit($nik)
+    {
+        $data = [
+            'title' => 'Penduduk',
+            'sub_title' => 'Edit Penduduk',
+            'validation' => \Config\Services::validation(),
+            'penduduk' => $this->M_Penduduk->where('nik',$nik)->first(),
+            'user' => $this->auth->where('id_user', session()->get('id_user'))->first(),
+        ];
+        echo view('templates/header', $data);
+        echo view('penduduk/edit', $data);
+        echo view('templates/footer');
     }
 
     public function create()
@@ -90,18 +97,11 @@ class Penduduk extends BaseController
         }
     }
 
-    public function edit($nik)
+    public function delete($nik)
     {
-        $data = [
-            'title' => 'Penduduk',
-            'sub_title' => 'Edit Penduduk',
-            'validation' => \Config\Services::validation(),
-            'penduduk' => $this->M_Penduduk->where('nik',$nik)->first(),
-            'user' => $this->auth->where('id_user', session()->get('id_user'))->first(),
-        ];
-        echo view('templates/header', $data);
-        echo view('penduduk/edit', $data);
-        echo view('templates/footer');
+        $this->M_Penduduk->delete($nik);
+        session()->setFlashdata('success', 'Berhasil Dihapus!');
+        return redirect()->to('/penduduk')->withInput();
     }
 
     public function update($nik)
