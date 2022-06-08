@@ -2,27 +2,39 @@
 
 namespace App\Controllers;
 
+use App\Models\SuratMasuk_model;
+use App\Models\SuratKeluar_model;
+use App\Models\PengajuanSurat_model;
+use App\Models\SuratKeterangan_model;
+
 // defined('BASEPATH') or exit('No direct script access allowed');
 
 class Surat extends BaseController
 {
-
-    // public function __construct()
-    // {
-    //     parent::__construct();
-    //     $this->load->model('dashboard_model', 'dashboard');
-    // }
+    protected $PengajuanSurat_model;
+    protected $SuratMasuk_model;
+    protected $SuratKeluar_model;
+    protected $SuratKeterangan_model;
+    
+    public function __construct()
+    {
+        // parent::__construct();
+        $this->PengajuanSurat_model = new PengajuanSurat_model;
+        $this->SuratMasuk_model = new SuratMasuk_model;
+        $this->SuratKeluar_model = new SuratKeluar_model;
+        $this->SuratKeterangan_model = new SuratKeterangan_model;
+    }
 
     public function surat_masuk()
     {
-        $judul = [
+        $data = [
+            'user' => $this->auth->where('id_user', session()->get('id_user'))->first(),
             'title' => 'Management Surat',
-            'sub_title' => 'Surat Masuk'
+            'sub_title' => 'Surat Masuk',
+            'data' => $this->SuratMasuk_model->findAll(),
         ];
 
-        $data['data'] = $this->suratMasuk->findAll();
-
-        echo view('templates/header', $judul);
+        echo view('templates/header', $data);
         echo view('surat/masuk', $data);
         echo view('templates/footer', $data);
     }
@@ -159,18 +171,19 @@ class Surat extends BaseController
     //     }
     // }
 
-    // public function surat_keluar()
-    // {
-    //     $judul = [
-    //         'title' => 'Management Surat',
-    //         'sub_title' => 'Surat Keluar'
-    //     ];
-    //     $data['data'] = $this->db->get('surat_keluar')->result_array();
+    public function surat_keluar()
+    {
+        $data = [
+            'user' => $this->auth->where('id_user', session()->get('id_user'))->first(),
+            'title' => 'Management Surat',
+            'sub_title' => 'Surat Keluar',
+            'data' => $this->SuratKeluar_model->findAll(),
+        ];
 
-    //     echo view('templates/header', $judul);
-    //     echo view('surat/keluar', $data);
-    //     echo view('templates/footer');
-    // }
+        echo view('templates/header', $data);
+        echo view('surat/keluar', $data);
+        echo view('templates/footer');
+    }
 
     // public function tambah_surat_keluar()
     // {
@@ -295,19 +308,19 @@ class Surat extends BaseController
     //     }
     // }
 
-    // public function surat_keterangan()
-    // {
-    //     $judul = [
-    //         'title' => 'Management Surat',
-    //         'sub_title' => 'Surat Keterangan'
-    //     ];
+    public function surat_keterangan()
+    {
+        $data = [
+            'user' => $this->auth->where('id_user', session()->get('id_user'))->first(),
+            'title' => 'Management Surat',
+            'sub_title' => 'Surat Keterangan',
+            'data' => $this->SuratKeterangan_model->findAll(),
+        ];
 
-    //     $data['data'] = $this->db->get('surat_keterangan')->result_array();
-
-    //     echo view('templates/header', $judul);
-    //     echo view('surat/keterangan', $data);
-    //     echo view('templates/footer');
-    // }
+        echo view('templates/header', $data);
+        echo view('surat/keterangan', $data);
+        echo view('templates/footer');
+    }
 
     // public function tambah_surat_keterangan()
     // {
@@ -432,48 +445,42 @@ class Surat extends BaseController
     //     }
     // }
 
-    // public function pengajuan()
-    // {
-    //     $judul = [
-    //         'title' => 'Management Surat',
-    //         'sub_title' => 'Pengajuan Surat'
-    //     ];
-
-    //     $data['status'] = [
-    //         1 => 'Pending',
-    //         2 => 'Syarat Tidak Terpenuhi',
-    //         3 => 'Diterima dan Dilanjutkan',
-    //         4 => 'Sudah Diketik dan Diparaf',
-    //         5 => 'Ditandatangani Kepala Desa/<b>Selesai</b>',
-    //     ];
-
-    //     $data['options'] = [
-    //         'SPKK' => 'Kartu Keluarga',
-    //         'SPNA' => 'Nikah(N.A)',
-    //         'SKKL' => 'Kelahiran',
-    //         'SKKM' => 'Kematian',
-    //         'SKP' => 'Pindah',
-    //         'SKD' => 'Datang',
-    //         'SKBM' => 'Belum Menikah',
-    //         'SKPH' => 'Penghasilan',
-    //         'SKM' => 'Miskin',
-    //         'SKU' => 'Usaha',
-    //         'SKT' => 'Tanah',
-    //         'SKGG' => 'Ganti Rugi',
-    //         'SITU' => 'Izin Tempat Usaha',
-    //         'SIMB' => 'Izin Mendirikan Bangunan',
-    //     ];
-    //     $this->db->select('*');
-    //     $this->db->from('pengajuan_surat');
-    //     $this->db->join('penduduk','penduduk.nik=pengajuan_surat.NIK');
-    //     $this->db->order_by("tanggal", "desc");
-    //     $query = $this->db->get();
-    //     $data['data'] = $query->result_array();
-
-    //     echo view('templates/header', $judul);
-    //     echo view('surat/pengajuan_surat', $data);
-    //     echo view('templates/footer');
-    // }
+    public function pengajuan()
+    {
+        $data = [
+            'user'      => $this->auth->where('id_user', session()->get('id_user'))->first(),
+            'title'     => 'Management Surat',
+            'sub_title' => 'Pengajuan Surat',
+            'data'      => $this->PengajuanSurat_model->select('*')->join('penduduk','penduduk.nik=pengajuan_surat.NIK')->orderBy("tanggal", "DESC")->findAll(),
+            'status'    => [
+                1 => 'Pending',
+                2 => 'Syarat Tidak Terpenuhi',
+                3 => 'Diterima dan Dilanjutkan',
+                4 => 'Sudah Diketik dan Diparaf',
+                5 => 'Ditandatangani Kepala Desa/<b>Selesai</b>',
+            ],
+            'options'  => [
+                'SPKK' => 'Kartu Keluarga',
+                'SPNA' => 'Nikah(N.A)',
+                'SKKL' => 'Kelahiran',
+                'SKKM' => 'Kematian',
+                'SKP'  => 'Pindah',
+                'SKD'  => 'Datang',
+                'SKBM' => 'Belum Menikah',
+                'SKPH' => 'Penghasilan',
+                'SKM'  => 'Miskin',
+                'SKU'  => 'Usaha',
+                'SKT'  => 'Tanah',
+                'SKGG' => 'Ganti Rugi',
+                'SITU' => 'Izin Tempat Usaha',
+                'SIMB' => 'Izin Mendirikan Bangunan',
+            ]
+        ];
+       
+        echo view('templates/header', $data);
+        echo view('surat/pengajuan_surat', $data);
+        echo view('templates/footer');
+    }
 
 
     // public function updateStatus($id)

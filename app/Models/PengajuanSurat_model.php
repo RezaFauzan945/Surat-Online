@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SuratKeluar_model extends Model
+class PengajuanSurat_model extends Model
 {
-    protected $table = 'surat_keluar';
-    protected $primaryKey = 'id_surat_keluar' ;
+    protected $table = 'pengajuan_surat';
+    protected $primaryKey = 'id' ;
     protected $useTimestamps = true;
 
     // public function cek_pengguna($where)

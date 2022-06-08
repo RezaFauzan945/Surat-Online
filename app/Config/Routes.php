@@ -64,10 +64,10 @@ $routes->delete('/penduduk/hapus/(:num)', 'Penduduk::delete/$1');
 $routes->post('/galery/edit_profil/(:num)', 'Galery::edit_profil/$1');
 $routes->post('/galery/edit_s_kelurahan/(:num)', 'Galery::edit_s_kelurahan/$1');
 
-$routes->get('/surat/keluar',     'Surat::index');
-$routes->get('/surat/pengajuan',  'Surat::index');
-$routes->get('/surat/keterangan', 'Surat::index');
-$routes->get('/surat/surat_masuk','Surat::surat_masuk');
+$routes->get('/surat_keluar',     'Surat::surat_keluar');
+$routes->get('/surat_pengajuan',  'Surat::pengajuan');
+$routes->get('/surat_keterangan', 'Surat::surat_keterangan');
+$routes->get('/surat_masuk','Surat::surat_masuk');
 $routes->get('/surat/tambah_surat_masuk','Surat::tambah_surat_masuk');
 
 $routes->post('/login', 'Auth::login');

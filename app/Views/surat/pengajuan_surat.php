@@ -2,9 +2,9 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-				<?php if ($this->session->flashdata('success') == TRUE) : ?>
+				<?php if (session()->getFlashdata('success') == TRUE) : ?>
 					<div class="alert alert-success">
-						<span><?= $this->session->flashdata('success'); ?></span>
+						<span><?= session()->getFlashdata('success'); ?></span>
 					</div>
 				<?php endif; ?>
 				<div class="card">
@@ -70,7 +70,7 @@
 											<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
 										</div>
 
-										<form method="post" action="<?= base_url(); ?>surat/updateStatus/<?= $key['id']; ?>">
+										<form method="post" action=/surat/updateStatus/<?= $key['id']; ?>">
 											<div class="modal-body text-center">
 												<h5>Update Status Pengajuan ID: <?= $key['id'] ?>? </h5>
 												<label for="status">Pilih Status</label>
@@ -113,7 +113,7 @@
 											<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
 										</div>
 
-										<form method="post" action="<?= base_url(); ?>surat/hapusPengajuan/<?= $key['id']; ?>">
+										<form method="post" action="/surat/hapusPengajuan/<?= $key['id']; ?>">
 											<div class="modal-body text-center">
 												<h5>Apakah anda yakin untuk menghapus pengajuan ini? </h5>
 											</div>
@@ -141,7 +141,7 @@
 											<div class="instruction">
 												<div class="row">
 													<div class="col-md-12">
-														<embed type="application/pdf" width="100%" height="450px;" src="<?= base_url('uploads/berkas') ?>/<?= $key['file'] ?>"></embed>
+														<embed type="application/pdf" width="100%" height="450px;" src="/uploads/berkas/<?= $key['file'] ?>"></embed>
 													</div>
 
 												</div>
@@ -168,7 +168,7 @@
 											<div class="instruction">
 												<div class="row">
 													<div class="col-md-12">
-														<embed type="application/pdf" width="100%" height="450px;" src="<?= base_url('uploads/berkas') ?>/<?= $key['file'] ?>"></embed>
+														<embed type="application/pdf" width="100%" height="450px;" src="/uploads/berkas/<?= $key['file'] ?>"></embed>
 													</div>
 
 												</div>

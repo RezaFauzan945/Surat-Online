@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class SuratKeterangan_model extends Model
 {
     protected $table = 'surat_keterangan';
-    protected $primaryKey = 'id' ;
+    protected $primaryKey = 'id_surat_keterangan' ;
     protected $useTimestamps = true;
 
     // public function cek_pengguna($where)

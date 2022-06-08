@@ -120,7 +120,7 @@
                                     <?= 'active'; ?>
                                 <?php endif; ?>
                                 ">
-									<a href="/surat/pengajuan">
+									<a href="/surat_pengajuan">
 										<span class="sidebar-mini">M</span>
 										<span class="sidebar-normal">Pengajuan Surat</span>
 									</a>
@@ -130,7 +130,7 @@
                                     <?= 'active'; ?>
                                 <?php endif; ?>
                                 ">
-									<a href="/surat/surat_masuk">
+									<a href="/surat_masuk">
 										<span class="sidebar-mini">M</span>
 										<span class="sidebar-normal">Surat Masuk</span>
 									</a>
@@ -140,7 +140,7 @@
                                     <?= 'active'; ?>
                                 <?php endif; ?>
                                 ">
-									<a href="/surat/surat_keluar">
+									<a href="/surat_keluar">
 										<span class="sidebar-mini">K</span>
 										<span class="sidebar-normal">Surat Keluar</span>
 									</a>
@@ -150,7 +150,7 @@
                                     <?= 'active'; ?>
                                 <?php endif; ?>
                                 ">
-									<a href="/surat/surat_keterangan">
+									<a href="/surat_keterangan">
 										<span class="sidebar-mini">SK</span>
 										<span class="sidebar-normal">Surat Keterangan</span>
 									</a>
@@ -280,7 +280,7 @@
 					<?php else : ?>
 
 						<li>
-							<a href="/auth/login">
+							<a href="/login">
 								<i class="material-icons">login</i>
 								<p>Login</p>
 							</a>

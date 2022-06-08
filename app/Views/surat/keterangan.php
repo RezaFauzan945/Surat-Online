@@ -10,7 +10,7 @@
                         <h4 class="card-title">Surat Keterangan</h4>
                         <div class="toolbar">
                             <!--        Here you can write extra buttons/actions for the toolbar              -->
-                            <a href="<?= base_url() ?>surat/tambah_surat_keterangan">
+                            <a href="/surat/tambah_surat_keterangan">
                                 <button class="btn btn-info">
                                     <span class="btn-label">
                                         <i class="material-icons">check</i>
@@ -19,9 +19,9 @@
                                 </button>
                             </a>
 
-                            <?php if ($this->session->flashdata('success') == TRUE) : ?>
+                            <?php if (session()->getFlashdata('success') == TRUE) : ?>
                                 <div class="alert alert-success">
-                                    <span><?= $this->session->flashdata('success'); ?></span>
+                                    <span><?= session()->getFlashdata('success'); ?></span>
                                 </div>
                             <?php endif; ?>
 
@@ -65,7 +65,7 @@
                                             </td>
                                             <td class="text-right">
 
-                                                <a href="<?= base_url() ?>surat/editSuratKeterangan/<?= $key['id_surat_keterangan']; ?>" class="btn btn-simple btn-primary btn-icon"><i class="material-icons">edit</i></a>
+                                                <a href="/surat/editSuratKeterangan/<?= $key['id_surat_keterangan']; ?>" class="btn btn-simple btn-primary btn-icon"><i class="material-icons">edit</i></a>
                                                 <button class="btn btn-simple btn-warning btn-icon" data-toggle="modal" data-target="#hapusSuratKeterangan<?= $key['id_surat_keterangan']; ?>"><i class="material-icons">close</i></button>
                                             </td>
                                         </tr>
@@ -86,7 +86,7 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
                                         </div>
 
-                                        <form method="post" action="<?= base_url(); ?>surat/hapusSuratKeterangan/<?= $key['id_surat_keterangan']; ?>">
+                                        <form method="post" action="/surat/hapusSuratKeterangan/<?= $key['id_surat_keterangan']; ?>">
                                             <div class="modal-body text-center">
                                                 <h5>Apakah anda yakin untuk menghapus surat keterangan? </h5>
                                             </div>
@@ -115,7 +115,7 @@
                                             <div class="instruction">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <embed type="application/pdf" width="100%" height="450px;" src="<?= base_url('uploads/surat_keterangan') ?>/<?= $key['file_surat_keterangan'] ?>"></embed>
+                                                        <embed type="application/pdf" width="100%" height="450px;" src="/uploads/surat_keterangan/<?= $key['file_surat_keterangan'] ?>"></embed>
                                                     </div>
 
                                                 </div>
