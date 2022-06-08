@@ -71,69 +71,92 @@ class Galery extends BaseController
 
     public function s_kelurahan()
     {
-        $data['profil'] = $this->galery->profil();
-        $judul = [
+        $data=[
             'title' => 'Galery',
-            'sub_title' => 'Struktur Kelurahan'
+            'sub_title' => 'Struktur Kelurahan',
+            'user' => $this->auth->where('id_user', session()->get('id_user'))->first(),
+            'profil' =>$this->galeryModel->first()
         ];
 
         // $data['sm'] = $this->db->get('surat_masuk')->row_array();
         // var_dump($data);
-        $this->load->view('templates/header', $judul);
-        $this->load->view('galery/s_kelurahan',$data);
-        $this->load->view('templates/footer');
+        echo view('templates/header', $data);
+        echo view('galery/s_kelurahan',$data);
+        echo view('templates/footer');
     }
 
-    public function edit_s_kelurahan()
+    public function edit_s_kelurahan($id)
     {
-        $this->form_validation->set_rules('s_kelurahan', 'Struktur Kelurahan', 'trim');
-
-        if ($this->form_validation->run() == false) {
-            $data['profil'] = $this->galery->profil();
-            $judul = [
+        if(!$this->validate([
+            's_kelurahan' =>   'uploaded[s_kelurahan]|is_image[s_kelurahan]|max_size[s_kelurahan,2048]|max_dims[s_kelurahan,1024,768]'
+        ]))
+        {
+            $data=[
                 'title' => 'Galery',
-                'sub_title' => 'Struktur Kelurahan'
+                'sub_title' => 'Struktur Kelurahan',
+                'user' => $this->auth->where('id_user', session()->get('id_user'))->first(),
+                'profil' =>$this->galeryModel->first(),
+                'galery' => $this->galeryModel->where('id',$id)->first()
             ];
 
             // $data['sm'] = $this->db->get('surat_masuk')->row_array();
             // var_dump($data);
-            $this->load->view('templates/header', $judul);
-            $this->load->view('galery/edit_s_kelurahan',$data);
-            $this->load->view('templates/footer');
-        }else{
-            $id = $this->uri->segment(3);
-            $upload_sk = $_FILES['s_kelurahan']['name'];
-            
-            $data['galery'] = $this->db->get_where('gallery', ['id' => $id])->row_array();
-
-            if ($upload_sk) {
-                $config['upload_path']          = './assets/galery/';
-                $config['allowed_types']        = 'gif|jpg|png';
-                $config['max_size']             = 2048; // 1MB
-                // $config['max_width']            = 1024;
-                // $config['max_height']           = 768;
-    
-                $this->load->library('upload');
-                $this->upload->initialize($config);
-    
-                if ($this->upload->do_upload('s_kelurahan')) {
-                    $old_sk = $data['galery']['s_kelurahan'];
-                    unlink(FCPATH . 'assets/galery/' . $old_sk);
-
-                    $s_kelurahan = $this->upload->data('file_name');
-                } else {
-                    echo $this->upload->display_errors();
-                }
-            }else {
-                $s_kelurahan = $this->input->post('s_kelurahan_old');
-            }
-            // var_dump($s_kelurahan);
-            // die;
-            
-            $this->galery->UpdateSKelurahan($s_kelurahan,$id);
-            $this->session->set_flashdata('success', 'Berhasil Di Update!');
-            redirect('galery/s_kelurahan');
+            echo view('templates/header', $data);
+            echo view('galery/edit_s_kelurahan',$data);
+            echo view('templates/footer');
         }
+        else{
+            $upload_sk = $this->request->getFile('s_kelurahan');
+            // if($upload_sk->getError() == 4)
+            // {
+            //     $data['galery'] = $this->galeryModel->where('id',$id)->first();
+            //     $old_sk = $data['galery']['s_kelurahan'];
+            //     unlink('assets/galery/' . $old_sk);
+            // }
+            $upload_sk->move('assets/galery/');
+            $s_kelurahan = $upload_sk->getName();
+            $this->galeryModel->save([
+                'id' => $id,
+                's_kelurahan' => $s_kelurahan,
+            ]);
+            session()->setFlashdata('success', 'Berhasil Di Update!');
+            return redirect()->to('galery/edit_s_kelurahan/'. $id);
+        }
+
+        // else{
+        //     $id = $this->uri->segment(3);
+        //     $upload_sk = $_FILES['s_kelurahan']['name'];
+            
+        //     $data['galery'] = $this->db->get_where('gallery', ['id' => $id])->row_array();
+
+        //     if ($upload_sk) {
+        //         $config['upload_path']          = './assets/galery/';
+        //         $config['allowed_types']        = 'gif|jpg|png';
+        //         $config['max_size']             = 2048; // 1MB
+        //         // $config['max_width']            = 1024;
+        //         // $config['max_height']           = 768;
+    
+        //         $this->load->library('upload');
+        //         $this->upload->initialize($config);
+    
+        //         if ($this->upload->do_upload('s_kelurahan')) {
+        //             $old_sk = $data['galery']['s_kelurahan'];
+        //             unlink(FCPATH . 'assets/galery/' . $old_sk);
+
+        //             $s_kelurahan = $this->upload->data('file_name');
+        //         } else {
+        //             echo $this->upload->display_errors();
+        //         }
+        //     }else {
+        //         $s_kelurahan = $this->input->post('s_kelurahan_old');
+        //     }
+        //     // var_dump($s_kelurahan);
+        //     // die;
+            
+        //     $this->galery->UpdateSKelurahan($s_kelurahan,$id);
+        //     $this->session->set_flashdata('success', 'Berhasil Di Update!');
+        //     redirect('galery/s_kelurahan');
+        // }
         
     }
 

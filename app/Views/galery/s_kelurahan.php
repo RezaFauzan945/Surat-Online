@@ -2,9 +2,9 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-			<?php if ($this->session->flashdata('success') == TRUE) : ?>
+			<?php if (session()->getFlashdata('success') == TRUE) : ?>
 			<div class="alert alert-success">
-				<span><?= $this->session->flashdata('success'); ?></span>
+				<span><?= session()->getFlashdata('success'); ?></span>
 			</div>
 			<?php endif; ?>
 				<div class="card">
@@ -13,8 +13,8 @@
 					</div>
 					<div class="card-content">
 						<h4 class="card-title">Struktur Kelurahan</h4>
-						<image class="img-fluid" src="<?= base_url('/assets/galery/'); echo $profil[0]['s_kelurahan'] ?>" alt="struktur-kelurahan"></image>
-						<a href="<?= base_url('galery/edit_s_kelurahan/')?><?= $profil[0]['id']?>"
+						<image class="img-fluid" src="/assets/galery/<?= $profil['s_kelurahan'] ?>" alt="struktur-kelurahan"></image>
+						<a href="/galery/edit_s_kelurahan/<?= $profil['id']?>"
 							class="btn btn-finish pull-right">Edit</a>
 					</div>
 					<!-- end content-->

@@ -39,9 +39,12 @@ $routes->get('/',          'Home::index');
 $routes->get('/login',     'Auth::login');
 $routes->get('/logout',    'Auth::logout');
 $routes->get('/dashboard', 'Dashboard::index');
+$routes->get('/galery/s_kelurahan', 'Galery::s_kelurahan');
 $routes->get('/galery/profil_kelurahan', 'Galery::profil_kelurahan');
-$routes->get('galery/edit_profil/(:num)', 'Galery::edit_profil/$1');
+$routes->get('/galery/edit_s_kelurahan/(:num)', 'Galery::edit_s_kelurahan/$1');
+$routes->get('/galery/edit_profil/(:num)', 'Galery::edit_profil/$1');
 $routes->post('/galery/edit_profil/(:num)', 'Galery::edit_profil/$1');
+$routes->post('/galery/edit_s_kelurahan/(:num)', 'Galery::edit_s_kelurahan/$1');
 
 $routes->get('/surat/keluar',     'Surat::index');
 $routes->get('/surat/pengajuan',  'Surat::index');
