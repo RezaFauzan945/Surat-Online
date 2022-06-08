@@ -39,10 +39,16 @@ $routes->get('/',          'Home::index');
 $routes->get('/login',     'Auth::login');
 $routes->get('/logout',    'Auth::logout');
 $routes->get('/dashboard', 'Dashboard::index');
+$routes->get('/penduduk',  'Penduduk::index');
+$routes->get('/penduduk/tambah',  'Penduduk::tambah');
 $routes->get('/galery/s_kelurahan', 'Galery::s_kelurahan');
 $routes->get('/galery/profil_kelurahan', 'Galery::profil_kelurahan');
 $routes->get('/galery/edit_s_kelurahan/(:num)', 'Galery::edit_s_kelurahan/$1');
 $routes->get('/galery/edit_profil/(:num)', 'Galery::edit_profil/$1');
+$routes->get('/penduduk/edit/(:num)', 'Penduduk::edit/$1');
+$routes->post('/penduduk/tambah',  'Penduduk::create');
+$routes->post('/penduduk/edit/(:num)', 'Penduduk::update/$1');
+$routes->delete('/penduduk/hapus/(:num)', 'Penduduk::delete/$1');
 $routes->post('/galery/edit_profil/(:num)', 'Galery::edit_profil/$1');
 $routes->post('/galery/edit_s_kelurahan/(:num)', 'Galery::edit_s_kelurahan/$1');
 
