@@ -19,16 +19,22 @@ class User extends BaseController
 
     public function index()
     {
-
-        $data = [
-            'title' => 'Management User',
-            'sub_title' => '',
-            'data' => $this->User_model->findAll(),
-            'user' => $this->auth->where('id_user', session()->get('id_user'))->first(),
-        ];
-        echo view('templates/header', $data);
-        echo view('user/index', $data);
-        echo view('templates/footer');
+        if(session()->get('level') != 'administrator')
+        {
+            return redirect()->to('/dashboard');
+        }
+        else
+        {
+            $data = [
+                'title' => 'Management User',
+                'sub_title' => '',
+                'data' => $this->User_model->findAll(),
+                'user' => $this->auth->where('id_user', session()->get('id_user'))->first(),
+            ];
+            echo view('templates/header', $data);
+            echo view('user/index', $data);
+            echo view('templates/footer');
+        }     
     }
 
     public function hapus($id)

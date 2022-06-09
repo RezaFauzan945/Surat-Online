@@ -18,7 +18,12 @@ class Pegawai extends BaseController
 
     public function index()
     {
-
+        if(session()->get('level') != 'administrator')
+        {
+            return redirect()->to('/dashboard');
+        }
+        else
+        {
         $data = [
             'user' => $this->auth->where('id_user', session()->get('id_user'))->first(),
             'title' => 'Management Pegawai',
@@ -28,6 +33,8 @@ class Pegawai extends BaseController
         echo view('templates/header', $data);
         echo view('pegawai/index', $data);
         echo view('templates/footer');
+        }
+
     }
 
     public function tambah()
