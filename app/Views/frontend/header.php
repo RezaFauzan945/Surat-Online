@@ -37,7 +37,7 @@
 					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#profil">Profil</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#struktur">Struktur Organisasi</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="/suratonline">Pengajuan Surat</a></li>
+					<li class="nav-item"><a class="nav-link" href="/surat_online">Pengajuan Surat</a></li>
 					<li class="nav-item"><a class="nav-link" href="/tracking">Track Surat</a></li>
 					<li class="nav-item"><a class="nav-link" target="_blank" href="/login/">Login</a></li>
 				</ul>

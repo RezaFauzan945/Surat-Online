@@ -1,7 +1,7 @@
 <section class="page-section">
 	<div class="container">
-		<?php if ($this->session->flashdata('message') == TRUE) : ?>
-		<?= $this->session->flashdata('message'); ?>
+		<?php if (session()->getFlashdata('message') == TRUE) : ?>
+		<?= session()->getFlashdata('message'); ?>
 		<?php endif; ?>
 		<div class="text-center">
 			<h2 class="section-heading text-uppercase">Tracking Surat Online</h2>

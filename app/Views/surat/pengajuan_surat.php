@@ -70,7 +70,7 @@
 											<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
 										</div>
 
-										<form method="post" action=/surat/updateStatus/<?= $key['id']; ?>">
+										<form method="post" action=/surat_pengajuan/update_status/<?= $key['id']; ?>>
 											<div class="modal-body text-center">
 												<h5>Update Status Pengajuan ID: <?= $key['id'] ?>? </h5>
 												<label for="status">Pilih Status</label>

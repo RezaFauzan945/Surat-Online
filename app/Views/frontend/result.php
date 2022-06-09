@@ -108,7 +108,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<embed type="application/pdf" width="100%" height="450px;" src="<?= base_url('uploads/berkas') ?>/<?= $row['file'] ?>"></embed>
+				<embed type="application/pdf" width="100%" height="450px;" src="/assets/uploads/berkas/<?= $row['file'] ?>"></embed>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

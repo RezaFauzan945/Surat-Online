@@ -64,6 +64,10 @@ $routes->delete('/penduduk/hapus/(:num)', 'Penduduk::delete/$1');
 $routes->post('/galery/edit_profil/(:num)', 'Galery::edit_profil/$1');
 $routes->post('/galery/edit_s_kelurahan/(:num)', 'Galery::edit_s_kelurahan/$1');
 
+$routes->get('/surat_online',     'SuratOnline::index');
+$routes->get('/tracking',         'Tracking::index');
+$routes->get('/tracking/tracked/(:any)',    'Tracking::tracked/$1');
+$routes->post('/tracking/cari',         'Tracking::cari');
 $routes->get('/surat_keluar',     'Surat::surat_keluar');
 $routes->get('/surat_pengajuan',  'Surat::pengajuan');
 $routes->get('/surat_keterangan', 'Surat::surat_keterangan');
@@ -80,6 +84,8 @@ $routes->post('/surat/edit_surat_keterangan/(:num)','Surat::update_surat_keteran
 $routes->post('/surat/tambah_surat_masuk',  'surat::create_surat_masuk');
 $routes->post('/surat/tambah_surat_keluar',  'surat::create_surat_keluar');
 $routes->post('/surat/tambah_surat_keterangan',  'surat::create_surat_keterangan');
+$routes->post('/surat_online/ajukan',  'SuratOnline::ajukan');
+$routes->post('/surat_pengajuan/update_status/(:any)',  'Surat::update_status/$1');
 
 $routes->delete('/surat/hapusSuratMasuk/(:num)', 'Surat::hapus_surat_masuk/$1');
 $routes->delete('/surat/hapusSuratKeluar/(:num)', 'Surat::hapus_surat_keluar/$1');

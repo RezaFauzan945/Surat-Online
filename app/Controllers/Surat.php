@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\M_Penduduk;
 use App\Models\SuratMasuk_model;
 use App\Models\SuratKeluar_model;
 use App\Models\PengajuanSurat_model;
@@ -15,6 +16,7 @@ class Surat extends BaseController
     protected $SuratMasuk_model;
     protected $SuratKeluar_model;
     protected $SuratKeterangan_model;
+    protected $M_Penduduk;
     
     public function __construct()
     {
@@ -23,6 +25,7 @@ class Surat extends BaseController
         $this->SuratMasuk_model = new SuratMasuk_model;
         $this->SuratKeluar_model = new SuratKeluar_model;
         $this->SuratKeterangan_model = new SuratKeterangan_model;
+        $this->M_Penduduk = new M_Penduduk;
     }
 
     public function surat_masuk()
@@ -659,69 +662,69 @@ class Surat extends BaseController
     }
 
 
-    // public function updateStatus($id)
-    // {
-    //     $options = [
-    //         'SPKK' => 'Kartu Keluarga',
-    //         'SPNA' => 'Nikah(N.A)',
-    //         'SKKL' => 'Kelahiran',
-    //         'SKKM' => 'Kematian',
-    //         'SKP' => 'Pindah',
-    //         'SKD' => 'Datang',
-    //         'SKBM' => 'Belum Menikah',
-    //         'SKPH' => 'Penghasilan',
-    //         'SKM' => 'Miskin',
-    //         'SKU' => 'Usaha',
-    //         'SKT' => 'Tanah',
-    //         'SKGG' => 'Ganti Rugi',
-    //         'SITU' => 'Izin Tempat Usaha',
-    //         'SIMB' => 'Izin Mendirikan Bangunan',
-    //     ];
+    public function update_status($id)
+    {
+        $options = [
+            'SPKK' => 'Kartu Keluarga',
+            'SPNA' => 'Nikah(N.A)',
+            'SKKL' => 'Kelahiran',
+            'SKKM' => 'Kematian',
+            'SKP' => 'Pindah',
+            'SKD' => 'Datang',
+            'SKBM' => 'Belum Menikah',
+            'SKPH' => 'Penghasilan',
+            'SKM' => 'Miskin',
+            'SKU' => 'Usaha',
+            'SKT' => 'Tanah',
+            'SKGG' => 'Ganti Rugi',
+            'SITU' => 'Izin Tempat Usaha',
+            'SIMB' => 'Izin Mendirikan Bangunan',
+        ];
 
-    //     $status = $this->input->post('status');
+        $status = $this->request->getPost('status');
 
-    //     // var_dump($status);
-    //     // die;
+        // var_dump($status);
+        // die;
 
-    //     if ($status == 5) {
-    //         $pSurat = $this->db->get_where('pengajuan_surat', ['id' => $id])->row_array();
-    //         $pndk = $this->db->get_where('penduduk', ['nik' => $pSurat['NIK']])->row_array();
-    //         $dateNow = date('Y-m-d');
-    //         // var_dump($pSurat);
-    //         // die;
+        if ($status == 5) {
+            $pSurat = $this->PengajuanSurat_model->where('id', $id)->first();
+            $pndk = $this->M_Penduduk->where('nik', $pSurat['NIK'])->first();
+            $dateNow = date('Y-m-d');
+            // var_dump($pSurat);
+            // die;
 
-    //         $save = [
-    //             'nama_surat_keluar' => '['.$pndk['nama'].'-'.$pndk['nik'].']-Surat '.$options[$pSurat['jenis_surat']],
-    //             'tanggal_surat_keluar' => date('Y-m-d', strtotime($dateNow)),
-    //             'keterangan_surat_keluar' => 'ID: '.$pSurat['id']
-    //         ];
+            $save = [
+                'nama_surat_keluar' => '['.$pndk['nama'].'-'.$pndk['nik'].']-Surat '.$options[$pSurat['jenis_surat']],
+                'tanggal_surat_keluar' => date('Y-m-d', strtotime($dateNow)),
+                'keterangan_surat_keluar' => 'ID: '.$pSurat['id']
+            ];
 
-    //         $this->db->insert('surat_keluar', $save);
-    //     };
+            $this->db->insert('surat_keluar', $save);
+        };
 
-    //     $this->db->set('status', $status);
+        $this->db->set('status', $status);
 
-    //     $this->db->where(['id' => $id]);
-    //     $this->db->update('pengajuan_surat');
+        $this->db->where(['id' => $id]);
+        $this->db->update('pengajuan_surat');
 
 
-    //     $this->session->set_flashdata('success', 'Status Pengajuan ID: ' . $id . ' Telah Diupdate!');
+        $this->session->set_flashdata('success', 'Status Pengajuan ID: ' . $id . ' Telah Diupdate!');
 
-    //     redirect(base_url('surat/pengajuan'));
-    // }
+        redirect(base_url('surat/pengajuan'));
+    }
 
-    // public function hapusPengajuan($id)
-    // {
+    public function hapusPengajuan($id)
+    {
 
-    //     $data = $this->db->get_where('pengajuan_surat', ['id' => $id])->row_array();
+        $data = $this->db->get_where('pengajuan_surat', ['id' => $id])->row_array();
 
-        // unlink("./uploads/berkas/" . $data['file']);
+        unlink("./uploads/berkas/" . $data['file']);
 
-    //     $this->db->where(['id' => $id]);
+        $this->db->where(['id' => $id]);
 
-    //     $this->db->delete('pengajuan_surat');
+        $this->db->delete('pengajuan_surat');
 
-    //     $this->session->set_flashdata('success', 'Pengajuan ID: ' . $id . ' Telah Dihapus!');
-    //     redirect(base_url('surat/pengajuan'));
-    // }
+        $this->session->set_flashdata('success', 'Pengajuan ID: ' . $id . ' Telah Dihapus!');
+        redirect(base_url('surat/pengajuan'));
+    }
 }
