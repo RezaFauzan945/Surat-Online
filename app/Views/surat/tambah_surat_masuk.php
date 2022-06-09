@@ -33,7 +33,7 @@
 
                         <div class="form-group">
                             <label class="label-control">Tanggal Surat</label>
-                            <input type="text" class="form-control datepicker" name="tanggal_surat" id="tanggal_surat" value="10/10/2016" />
+                            <input type="date" class="form-control datepicker" name="tanggal_surat" id="tanggal_surat" value="10/10/2016" />
                         </div>
                         <?php if ($validation->getError('tanggal_surat')) : ?>
                                 <div class='text text-danger mt-2'>

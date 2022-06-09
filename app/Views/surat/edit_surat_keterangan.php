@@ -3,6 +3,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    <?php if (session()->getFlashdata('success') == TRUE) : ?>
+                        <div class="alert alert-success">
+                            <span><?= session()->getFlashdata('success'); ?></span>
+                        </div>
+                    <?php endif; ?>
                     <form action="" method="POST" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
                         <!-- <form id="RegisterValidation" action="" method=""> -->
@@ -19,7 +24,7 @@
 
                             <div class="form-group">
                                 <label class="label-control">Tanggal Surat</label>
-                                <input type="text" class="form-control datepicker" name="tanggal_surat" id="tanggal_surat" value="<?= $surat_keterangan['tanggal_surat_keterangan']; ?>" />
+                                <input type="date" class="form-control datepicker" name="tanggal_surat" id="tanggal_surat" value="<?= $surat_keterangan['tanggal_surat_keterangan']; ?>" />
                             </div>
 
                             <div class="form-group">
