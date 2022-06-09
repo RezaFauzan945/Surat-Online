@@ -11,24 +11,45 @@
                     </div>
                     <div class="card-content">
                         <h4 class="card-title">Tambah Surat Masuk</h4>
-
+                        <?php if (session()->getFlashdata('success') == TRUE) : ?>
+                                <div class="alert alert-success">
+                                    <span><?= session()->getFlashdata('success'); ?></span>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (session()->getFlashdata('error') == TRUE) : ?>
+                                <div class="alert alert-danger">
+                                    <span><?= session()->getFlashdata('error'); ?></span>
+                                </div>
+                            <?php endif; ?>
                         <div class="form-group">
                             <label class="label-control">Nama Surat</label>
                             <input class="form-control" name="nama_surat" id="nama_surat" type="text" value="<?= old('nama_surat'); ?>" />
                         </div>
-                        <?= form_error('nama_surat', '<div class="text-danger">', '</div>'); ?>
+                        <?php if ($validation->getError('nama_surat')) : ?>
+                                <div class='text text-danger mt-2'>
+                                    <?= $error = $validation->getError('nama_surat'); ?>
+                                </div>
+                            <?php endif ?>
 
                         <div class="form-group">
                             <label class="label-control">Tanggal Surat</label>
                             <input type="text" class="form-control datepicker" name="tanggal_surat" id="tanggal_surat" value="10/10/2016" />
                         </div>
-                        <?= form_error('tanggal_surat', '<div class="text-danger">', '</div>'); ?>
+                        <?php if ($validation->getError('tanggal_surat')) : ?>
+                                <div class='text text-danger mt-2'>
+                                    <?= $error = $validation->getError('tanggal_surat'); ?>
+                                </div>
+                            <?php endif ?>
 
                         <div class="form-group">
                             <label class="label-control">Keterangan Surat</label>
-                            <input class="form-control" name="keterangan_surat" id="keterangan_surat" type="text" <?= set_value('keterangan_surat'); ?> />
+                            <input class="form-control" name="keterangan_surat" id="keterangan_surat" type="text" <?= old('keterangan_surat'); ?> />
                         </div>
-                        <?= form_error('keterangan_surat', '<div class="text-danger">', '</div>'); ?>
+                        <?php if ($validation->getError('keterangan_surat')) : ?>
+                                <div class='text text-danger mt-2'>
+                                    <?= $error = $validation->getError('keterangan_surat'); ?>
+                                </div>
+                            <?php endif ?>
 
                         <div class="form-group">
                             <label class="label-control">File Surat</label>
@@ -48,7 +69,11 @@
                                 </div>
                             </div>
                         </div>
-                        <?= form_error('file_surat', '<div class="text-danger">', '</div>'); ?>
+                        <?php if ($validation->getError('file_surat')) : ?>
+                                <div class='text text-danger mt-2'>
+                                    <?= $error = $validation->getError('file_surat'); ?>
+                                </div>
+                            <?php endif ?>
 
                         <div class="category form-category">
                             <div class="form-footer text-right">

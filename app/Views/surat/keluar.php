@@ -55,7 +55,7 @@
                                             </td>
                                             <td class="text-right">
 
-                                                <a href="/surat/editSuratKeluar/<?= $key['id_surat_keluar']; ?>" class="btn btn-simple btn-primary btn-icon"><i class="material-icons">edit</i></a>
+                                                <a href="/surat/edit_surat_keluar/<?= $key['id_surat_keluar']; ?>" class="btn btn-simple btn-primary btn-icon"><i class="material-icons">edit</i></a>
                                                 <button class="btn btn-simple btn-warning btn-icon" data-toggle="modal" data-target="#hapusSuratKeluar<?= $key['id_surat_keluar']; ?>"><i class="material-icons">close</i></button>
                                             </td>
                                         </tr>
@@ -77,6 +77,8 @@
                                         </div>
 
                                         <form method="post" action="/surat/hapusSuratKeluar/<?= $key['id_surat_keluar']; ?>">
+                                            <?= csrf_field() ?>
+                                            <input type="hidden" name="_method" value="DELETE">
                                             <div class="modal-body text-center">
                                                 <h5>Apakah anda yakin untuk menghapus surat keluar? </h5>
                                             </div>
@@ -105,7 +107,7 @@
                                             <div class="instruction">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <embed type="application/pdf" width="100%" height="450px;" src="/uploads/surat_keluar/<?= $key['file_surat_keluar'] ?>"></embed>
+                                                        <embed type="application/pdf" width="100%" height="450px;" src="/assets/uploads/surat/surat_keluar/<?= $key['file_surat_keluar'] ?>"></embed>
                                                     </div>
 
                                                 </div>

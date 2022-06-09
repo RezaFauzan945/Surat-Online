@@ -65,7 +65,7 @@
                                             </td>
                                             <td class="text-right">
 
-                                                <a href="/surat/editSuratKeterangan/<?= $key['id_surat_keterangan']; ?>" class="btn btn-simple btn-primary btn-icon"><i class="material-icons">edit</i></a>
+                                                <a href="/surat/edit_surat_keterangan/<?= $key['id_surat_keterangan']; ?>" class="btn btn-simple btn-primary btn-icon"><i class="material-icons">edit</i></a>
                                                 <button class="btn btn-simple btn-warning btn-icon" data-toggle="modal" data-target="#hapusSuratKeterangan<?= $key['id_surat_keterangan']; ?>"><i class="material-icons">close</i></button>
                                             </td>
                                         </tr>
@@ -87,6 +87,8 @@
                                         </div>
 
                                         <form method="post" action="/surat/hapusSuratKeterangan/<?= $key['id_surat_keterangan']; ?>">
+                                            <?= csrf_field() ?>
+                                            <input type="hidden" name="_method" value="DELETE">
                                             <div class="modal-body text-center">
                                                 <h5>Apakah anda yakin untuk menghapus surat keterangan? </h5>
                                             </div>
@@ -115,7 +117,7 @@
                                             <div class="instruction">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <embed type="application/pdf" width="100%" height="450px;" src="/uploads/surat_keterangan/<?= $key['file_surat_keterangan'] ?>"></embed>
+                                                        <embed type="application/pdf" width="100%" height="450px;" src="/assets/uploads/surat/surat_keterangan/<?= $key['file_surat_keterangan'] ?>"></embed>
                                                     </div>
 
                                                 </div>

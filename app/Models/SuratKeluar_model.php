@@ -8,7 +8,13 @@ class SuratKeluar_model extends Model
 {
     protected $table = 'surat_keluar';
     protected $primaryKey = 'id_surat_keluar' ;
-    protected $useTimestamps = true;
+    protected $allowedFields = [ 
+        'id_surat_keluar',
+        'nama_surat_keluar',
+        'tanggal_surat_keluar',
+        'keterangan_surat_keluar',
+        'file_surat_keluar',
+        ];
 
     // public function cek_pengguna($where)
     // {

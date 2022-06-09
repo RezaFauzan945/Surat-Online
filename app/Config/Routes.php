@@ -69,6 +69,21 @@ $routes->get('/surat_pengajuan',  'Surat::pengajuan');
 $routes->get('/surat_keterangan', 'Surat::surat_keterangan');
 $routes->get('/surat_masuk','Surat::surat_masuk');
 $routes->get('/surat/tambah_surat_masuk','Surat::tambah_surat_masuk');
+$routes->get('/surat/edit_surat_masuk/(:num)','Surat::edit_surat_masuk/$1');
+$routes->get('/surat/edit_surat_keluar/(:num)','Surat::edit_surat_keluar/$1');
+$routes->get('/surat/edit_surat_keterangan/(:num)','Surat::edit_surat_keterangan/$1');
+$routes->get('/surat/tambah_surat_keterangan','Surat::tambah_surat_keterangan');
+$routes->get('/surat/tambah_surat_keluar','Surat::tambah_surat_keluar');
+$routes->post('/surat/edit_surat_masuk/(:num)','Surat::update_surat_masuk/$1');
+$routes->post('/surat/edit_surat_keluar/(:num)','Surat::update_surat_keluar/$1');
+$routes->post('/surat/edit_surat_keterangan/(:num)','Surat::update_surat_keterangan/$1');
+$routes->post('/surat/tambah_surat_masuk',  'surat::create_surat_masuk');
+$routes->post('/surat/tambah_surat_keluar',  'surat::create_surat_keluar');
+$routes->post('/surat/tambah_surat_keterangan',  'surat::create_surat_keterangan');
+
+$routes->delete('/surat/hapusSuratMasuk/(:num)', 'Surat::hapus_surat_masuk/$1');
+$routes->delete('/surat/hapusSuratKeluar/(:num)', 'Surat::hapus_surat_keluar/$1');
+$routes->delete('/surat/hapusSuratKeterangan/(:num)', 'Surat::hapus_surat_keterangan/$1');
 
 $routes->post('/login', 'Auth::login');
 

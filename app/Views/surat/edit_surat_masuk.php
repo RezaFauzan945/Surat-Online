@@ -3,7 +3,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <?php echo form_open_multipart(); ?>
+                <form action="" method="POST" enctype="multipart/form-data">
+                        <?= csrf_field(); ?>
                     <!-- <form id="RegisterValidation" action="" method=""> -->
                     <div class="card-header card-header-icon" data-background-color="rose">
                         <i class="material-icons">mail_outline</i>
