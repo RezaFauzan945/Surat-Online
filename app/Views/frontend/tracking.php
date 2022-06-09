@@ -18,7 +18,7 @@
 						<!--end of col-->
 						<div class="col">
 							<input class="form-control form-control-lg form-control-borderless" type="search"
-								name="trackid" placeholder="Masukkan ID Pengajuan Anda">
+								name="trackid" placeholder="Masukkan ID Pengajuan Anda" required>
 						</div>
 						<!--end of col-->
 						<div class="col-auto">

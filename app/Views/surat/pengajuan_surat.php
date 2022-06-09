@@ -34,32 +34,32 @@
 
 									<?php $no = 1; ?>
 									<?php foreach ($data as $key) : ?>
-									<?php if($key['status'] !== '5'):?>
-										<tr>
-											<td><?= $no; ?></td>
-											<td><?= $key['id']; ?></td>
-											<td><?= $key['nama'] . ' (' . $key['nik'] . ')'; ?></td>
-											<td>
+										<?php if ($key['status'] !== '5') : ?>
+											<tr>
+												<td><?= $no; ?></td>
+												<td><?= $key['id']; ?></td>
+												<td><?= $key['nama'] . ' (' . $key['nik'] . ')'; ?></td>
+												<td>
 
-												<button class="btn btn-simple btn-info" data-toggle="modal" data-target="#lihatfile<?= $key['id']; ?>"><i class="material-icons">remove_red_eye</i></button>
-											</td>
-											<td><?= $status[$key['status']]; ?></td>
-											<td class="text-right">
-												<button class="btn btn-simple btn-success btn-icon" data-toggle="modal" data-target="#statusPengajuan<?= $key['id']; ?>"><i class="material-icons">outbond</i>Update Status</button>
-												<button class="btn btn-simple btn-danger btn-icon" data-toggle="modal" data-target="#hapusPengajuan<?= $key['id']; ?>"><i class="material-icons">delete</i></button>
-											</td>
-											<td><?= $key['no_hp']; ?></td>
-											<td><?= $key['tanggal']; ?></td>
-											<td><?= $options[$key['jenis_surat']]; ?></td>
+													<button class="btn btn-simple btn-info" data-toggle="modal" data-target="#lihatfile<?= $key['id']; ?>"><i class="material-icons">remove_red_eye</i></button>
+												</td>
+												<td><?= $status[$key['status']]; ?></td>
+												<td class="text-right">
+													<button class="btn btn-simple btn-success btn-icon" data-toggle="modal" data-target="#statusPengajuan<?= $key['id']; ?>"><i class="material-icons">outbond</i>Update Status</button>
+													<button class="btn btn-simple btn-danger btn-icon" data-toggle="modal" data-target="#hapusPengajuan<?= $key['id']; ?>"><i class="material-icons">delete</i></button>
+												</td>
+												<td><?= $key['no_hp']; ?></td>
+												<td><?= $key['tanggal']; ?></td>
+												<td><?= $options[$key['jenis_surat']]; ?></td>
 
-										</tr>
-										<?php $no++; ?>
-									<?php endif; ?>
+											</tr>
+											<?php $no++; ?>
+										<?php endif; ?>
 									<?php endforeach; ?>
 								</tbody>
 							</table>
 						</div>
- 
+
 
 						<!-- large modal update  -->
 						<?php foreach ($data as $key) : ?>
@@ -114,6 +114,8 @@
 										</div>
 
 										<form method="post" action="/surat/hapusPengajuan/<?= $key['id']; ?>">
+											<?= csrf_field() ?>
+											<input type="hidden" name="_method" value="DELETE">
 											<div class="modal-body text-center">
 												<h5>Apakah anda yakin untuk menghapus pengajuan ini? </h5>
 											</div>
@@ -141,7 +143,7 @@
 											<div class="instruction">
 												<div class="row">
 													<div class="col-md-12">
-														<embed type="application/pdf" width="100%" height="450px;" src="/uploads/berkas/<?= $key['file'] ?>"></embed>
+														<embed type="application/pdf" width="100%" height="450px;" src="/assets/uploads/berkas/<?= $key['file'] ?>"></embed>
 													</div>
 
 												</div>
@@ -168,7 +170,7 @@
 											<div class="instruction">
 												<div class="row">
 													<div class="col-md-12">
-														<embed type="application/pdf" width="100%" height="450px;" src="/uploads/berkas/<?= $key['file'] ?>"></embed>
+														<embed type="application/pdf" width="100%" height="450px;" src="/assets/uploads/berkas/<?= $key['file'] ?>"></embed>
 													</div>
 
 												</div>

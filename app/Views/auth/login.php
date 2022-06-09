@@ -31,7 +31,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href=" ../dashboard.html ">Sistem Informasi Manajemen Surat Menyurat Kantor Desa Meliau Hilir</a>
+                <a class="navbar-brand" href="/">Sistem Informasi Manajemen Surat Menyurat Kantor Desa Meliau Hilir</a>
             </div>
             <!-- <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">

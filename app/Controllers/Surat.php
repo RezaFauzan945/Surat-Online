@@ -138,83 +138,6 @@ class Surat extends BaseController
             return redirect()->to('/surat/edit_surat_masuk/'.$id);
         }
     }
-    // public function hapusSuratMasuk($id)
-    // {
-
-    //     $data = $this->db->get_where('surat_masuk', ['id_surat_masuk' => $id])->row_array();
-
-        // unlink("./uploads/surat_masuk/" . $data['file_surat_masuk']);
-
-    //     $this->db->where(['id_surat_masuk' => $id]);
-
-    //     $this->db->delete('surat_masuk');
-
-    //     $this->session->set_flashdata('success', 'Berhasil Dihapus!');
-
-    //     redirect(base_url('surat/surat_masuk'));
-    // }
-
-    // public function editSuratMasuk($id)
-    // {
-
-    //     $this->form_validation->set_rules('nama_surat', 'Nama Surat', 'required');
-    //     $this->form_validation->set_rules('tanggal_surat', 'Keterangan', 'required');
-    //     $this->form_validation->set_rules('keterangan_surat', 'Keterangan', 'required');
-    //     // $this->form_validation->set_rules('file_surat', 'Keterangan', 'required');
-
-    //     if ($this->form_validation->run() == FALSE) {
-    //         $judul = [
-    //             'title' => 'Management Surat',
-    //             'sub_title' => 'Surat Masuk'
-    //         ];
-    //         $data['surat_masuk'] = $this->db->get_where('surat_masuk', ['id_surat_masuk' => $id])->row_array();
-
-    //         echo view('templates/header', $judul);
-    //         echo view('surat/edit_surat_masuk', $data);
-    //         echo view('templates/footer');
-    //     } else {
-    //         $nama_surat =  $this->input->post("nama_surat", TRUE);
-    //         $tanggal_surat =  $this->input->post("tanggal_surat", TRUE);
-    //         $keterangan_surat =  $this->input->post("keterangan_surat", TRUE);
-    //         // $file_surat =  $this->input->post("file_surat", TRUE);
-
-    //         $config['upload_path']          = './uploads/surat_masuk';
-    //         $config['allowed_types']        = 'pdf|doc|docx';
-    //         $this->load->library('upload', $config);
-
-    //         if ($this->upload->do_upload('file_surat')) {
-    //             $data = $this->db->get_where('surat_masuk', ['id_surat_masuk' => $id])->row_array();
-                // unlink("./uploads/surat_masuk/" . $data['file_surat_masuk']);
-
-    //             $data = array('upload_data' => $this->upload->data());
-    //             $file_surat = $data['upload_data']['file_name'];
-
-    //             $update = [
-    //                 'nama_surat_masuk' => $nama_surat,
-    //                 'tanggal_surat_masuk' => date('Y-m-d', strtotime($tanggal_surat)),
-    //                 'keterangan_surat_masuk' => $keterangan_surat,
-    //                 'file_surat_masuk' => $file_surat
-    //             ];
-
-    //             $this->db->where('id_surat_masuk', $id);
-    //             $this->db->update('surat_masuk', $update);
-    //             $this->session->set_flashdata('success', 'Berhasil Diedit!');
-    //             redirect(base_url("surat/surat_masuk"));
-    //         } else {
-
-    //             $update = [
-    //                 'nama_surat_masuk' => $nama_surat,
-    //                 'tanggal_surat_masuk' => date('Y-m-d', strtotime($tanggal_surat)),
-    //                 'keterangan_surat_masuk' => $keterangan_surat,
-    //             ];
-
-    //             $this->db->where('id_surat_masuk', $id);
-    //             $this->db->update('surat_masuk', $update);
-    //             $this->session->set_flashdata('success', 'Berhasil Diedit!');
-    //             redirect(base_url("surat/surat_masuk"));
-    //         }
-    //     }
-    // }
 
     public function surat_keluar()
     {
@@ -327,129 +250,6 @@ class Surat extends BaseController
         session()->setFlashdata('success', 'Berhasil Dihapus!');
         return redirect()->to('/surat_keluar')->withInput();
     }
-
-    // public function tambah_surat_keluar()
-    // {
-
-    //     $this->form_validation->set_rules('nama_surat', 'Nama Surat', 'required');
-    //     $this->form_validation->set_rules('tanggal_surat', 'Keterangan', 'required');
-    //     $this->form_validation->set_rules('keterangan_surat', 'Keterangan', 'required');
-    //     // $this->form_validation->set_rules('file_surat', 'Keterangan', 'required');
-
-    //     if ($this->form_validation->run() == FALSE) {
-    //         $judul = [
-    //             'title' => 'Management Surat',
-    //             'sub_title' => 'Surat Keluar'
-    //         ];
-    //         echo view('templates/header', $judul);
-    //         echo view('surat/tambah_surat_keluar');
-    //         echo view('templates/footer');
-    //     } else {
-    //         $nama_surat =  $this->input->post("nama_surat", TRUE);
-    //         $tanggal_surat =  $this->input->post("tanggal_surat", TRUE);
-    //         $keterangan_surat =  $this->input->post("keterangan_surat", TRUE);
-    //         // $file_surat =  $this->input->post("file_surat", TRUE);
-
-    //         $config['upload_path']          = './uploads/surat_keluar';
-    //         $config['allowed_types']        = 'pdf|doc|docx';
-    //         $this->load->library('upload', $config);
-
-    //         if ($this->upload->do_upload('file_surat')) {
-
-    //             $data = array('upload_data' => $this->upload->data());
-    //             $file_surat = $data['upload_data']['file_name'];
-
-    //             $save = [
-    //                 'nama_surat_keluar' => $nama_surat,
-    //                 'tanggal_surat_keluar' => date('Y-m-d', strtotime($tanggal_surat)),
-    //                 'keterangan_surat_keluar' => $keterangan_surat,
-    //                 'file_surat_keluar' => $file_surat
-    //             ];
-
-    //             $this->db->insert('surat_keluar', $save);
-    //             $this->session->set_flashdata('success', 'Berhasil Ditambahkan!');
-    //             redirect(base_url("surat/surat_keluar"));
-    //         }
-    //     }
-    // }
-
-    // public function hapusSuratKeluar($id)
-    // {
-
-    //     $data = $this->db->get_where('surat_keluar', ['id_surat_keluar' => $id])->row_array();
-
-        // unlink("./uploads/surat_keluar/" . $data['file_surat_keluar']);
-
-    //     $this->db->where(['id_surat_keluar' => $id]);
-
-    //     $this->db->delete('surat_keluar');
-
-    //     $this->session->set_flashdata('success', 'Berhasil Dihapus!');
-
-    //     redirect(base_url('surat/surat_keluar'));
-    // }
-
-    // public function editSuratKeluar($id)
-    // {
-
-    //     $this->form_validation->set_rules('nama_surat', 'Nama Surat', 'required');
-    //     $this->form_validation->set_rules('tanggal_surat', 'Keterangan', 'required');
-    //     $this->form_validation->set_rules('keterangan_surat', 'Keterangan', 'required');
-    //     // $this->form_validation->set_rules('file_surat', 'Keterangan', 'required');
-
-    //     if ($this->form_validation->run() == FALSE) {
-    //         $judul = [
-    //             'title' => 'Management Surat',
-    //             'sub_title' => 'Surat Keluar'
-    //         ];
-    //         $data['surat_keluar'] = $this->db->get_where('surat_keluar', ['id_surat_keluar' => $id])->row_array();
-
-    //         echo view('templates/header', $judul);
-    //         echo view('surat/edit_surat_keluar', $data);
-    //         echo view('templates/footer');
-    //     } else {
-    //         $nama_surat =  $this->input->post("nama_surat", TRUE);
-    //         $tanggal_surat =  $this->input->post("tanggal_surat", TRUE);
-    //         $keterangan_surat =  $this->input->post("keterangan_surat", TRUE);
-    //         // $file_surat =  $this->input->post("file_surat", TRUE);
-
-    //         $config['upload_path']          = './uploads/surat_keluar';
-    //         $config['allowed_types']        = 'pdf|doc|docx';
-    //         $this->load->library('upload', $config);
-
-    //         if ($this->upload->do_upload('file_surat')) {
-    //             $data = $this->db->get_where('surat_keluar', ['id_surat_keluar' => $id])->row_array();
-                // unlink("./uploads/surat_keluar/" . $data['file_surat_keluar']);
-
-    //             $data = array('upload_data' => $this->upload->data());
-    //             $file_surat = $data['upload_data']['file_name'];
-
-    //             $update = [
-    //                 'nama_surat_keluar' => $nama_surat,
-    //                 'tanggal_surat_keluar' => date('Y-m-d', strtotime($tanggal_surat)),
-    //                 'keterangan_surat_keluar' => $keterangan_surat,
-    //                 'file_surat_keluar' => $file_surat
-    //             ];
-
-    //             $this->db->where('id_surat_keluar', $id);
-    //             $this->db->update('surat_keluar', $update);
-    //             $this->session->set_flashdata('success', 'Berhasil Diedit!');
-    //             redirect(base_url("surat/surat_keluar"));
-    //         } else {
-
-    //             $update = [
-    //                 'nama_surat_keluar' => $nama_surat,
-    //                 'tanggal_surat_keluar' => date('Y-m-d', strtotime($tanggal_surat)),
-    //                 'keterangan_surat_keluar' => $keterangan_surat
-    //             ];
-
-    //             $this->db->where('id_surat_keluar', $id);
-    //             $this->db->update('surat_keluar', $update);
-    //             $this->session->set_flashdata('success', 'Berhasil Diedit!');
-    //             redirect(base_url("surat/surat_keluar"));
-    //         }
-    //     }
-    // }
 
     public function surat_keterangan()
     {
@@ -681,7 +481,7 @@ class Surat extends BaseController
             'SIMB' => 'Izin Mendirikan Bangunan',
         ];
 
-        $status = $this->request->getPost('status');
+        $status = ['status' => $this->request->getPost('status')];
 
         // var_dump($status);
         // die;
@@ -699,32 +499,22 @@ class Surat extends BaseController
                 'keterangan_surat_keluar' => 'ID: '.$pSurat['id']
             ];
 
-            $this->db->insert('surat_keluar', $save);
+            $this->SuratKeluar_model->insert($save);
         };
 
-        $this->db->set('status', $status);
+        $this->PengajuanSurat_model->update($id,$status);
 
-        $this->db->where(['id' => $id]);
-        $this->db->update('pengajuan_surat');
+        session()->setFlashdata('success', 'Status Pengajuan ID: ' . $id . ' Telah Diupdate!');
 
-
-        $this->session->set_flashdata('success', 'Status Pengajuan ID: ' . $id . ' Telah Diupdate!');
-
-        redirect(base_url('surat/pengajuan'));
+        return redirect()->to('/surat_pengajuan');
     }
 
     public function hapusPengajuan($id)
     {
-
-        $data = $this->db->get_where('pengajuan_surat', ['id' => $id])->row_array();
-
-        unlink("./uploads/berkas/" . $data['file']);
-
-        $this->db->where(['id' => $id]);
-
-        $this->db->delete('pengajuan_surat');
-
-        $this->session->set_flashdata('success', 'Pengajuan ID: ' . $id . ' Telah Dihapus!');
-        redirect(base_url('surat/pengajuan'));
+        $data = $this->PengajuanSurat_model->where('id' , $id)->first();
+        $this->PengajuanSurat_model->delete($id);
+        unlink("assets/uploads/berkas/" . $data['file']);
+        session()->setFlashdata('success', 'Berhasil Dihapus!');
+        return redirect()->to('/surat_pengajuan')->withInput();
     }
 }

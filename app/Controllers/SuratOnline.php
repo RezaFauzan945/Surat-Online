@@ -106,21 +106,26 @@ class SuratOnline extends BaseController
 
         if(!$this->validate([
             'nik'  =>[
-                'rules' => 'required|trim',
+                'rules' => 'required|trim|is_natural_no_zero|min_length[16]',
                 'errors' =>[
-                    'required' => '{field} harus diisi!'
+                    'required' => '{field} Harus diisi!',
+                    'is_natural_no_zero' => '{field} Tolong hanya isi dengan angka Yang Benar!',
+                    'min_length'=> '{field} minimal 16 Angka'
                 ],
             ],
             'nama'  =>[
-                'rules' => 'required|trim',
+                'rules' => 'required|trim|alpha_space',
                 'errors' =>[
-                    'required' => '{field} harus diisi!'
+                    'required' => '{field} harus diisi!',
+                    'alpha_space' => '{field} Tolong Isi hanya dengan huruf dan nama yang benar'
                 ],
             ],
             'no_hp'  =>[
-                'rules' => 'required|trim',
+                'rules' => 'required|trim|is_natural|min_length[10]',
                 'errors' =>[
-                    'required' => 'No Handphone harus diisi!'
+                    'required' => 'No Handphone harus diisi!',
+                    'is_natural' => 'No Handphone Tolong hanya isi dengan angka Yang Benar!',
+                    'min_length'=> 'No Handphone minimal 10 Angka'
                 ],
             ],
             'jenis_surat'  =>[
@@ -132,7 +137,7 @@ class SuratOnline extends BaseController
             'file' => [
                 'rules' => 'uploaded[file]|max_size[file,5120]',
                 'errors' => [
-                    'uploaded' => '{field} harus diunggah!',
+                    'uploaded' => '{field} harus diunggah dan pastikan sesuai dengan persyaratan sesuai jenis surat!',
                     'max_size' => '{field} melebihi 5MB!'
                 ],
             ],   

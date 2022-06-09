@@ -5,90 +5,60 @@ namespace App\Controllers;
 // defined('BASEPATH') or exit('No direct script access allowed');
 
 use App\Models\Auth_model;
+use PhpParser\Node\Expr\Isset_;
 
 class Auth extends BaseController
 {
     function __construct()
     {
-        // parent::__construct();
         $this->auth = new Auth_model();
-        // if ($this->session->userdata('id_user') == TRUE) {
-        //     redirect(base_url("dashboard"));
-        // }
     }
 
     public function login()
     {
-        // $this->form_validation->set_rules('username', 'Username', 'required');
-        // $this->form_validation->set_rules('password', 'Password', 'required');
-        if(!$this->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ]))
+        if(session()->get('id_user') != null)
         {
-            echo view('auth/login');
+            return redirect()->to('/dashboard');
         }
-        else 
+        else
         {
-            $user = $this->request->getPost('username');
-            $pass = $this->request->getPost('password');
-
-            $where = [
-                        'username' => $user,
-                        'password' => $pass
-                    ];
-        
-            $cek = $this->auth->where($where)->countAllResults();
-            if ($cek <= 0) {
-                session()->setFlashdata('gagal','Username dan Password Anda Salah');
-                return redirect()->to('/login');
-            }
-            else
+            if(!$this->validate([
+                'username' => 'required',
+                'password' => 'required',
+            ]))
             {
-                $cek_akun = $this->auth->where($where)->first();
-                $id_user = $cek_akun["id_user"];
-                $level = $cek_akun["level"];
-                $data_session = [
-                    'id_user' => $id_user,
-                    'level' => $level
-                ];
-                
-                session()->set($data_session);
-                return redirect()->to('/dashboard');
+                echo view('auth/login');
+            }
+            else 
+            {
+                $user = $this->request->getPost('username');
+                $pass = $this->request->getPost('password');
+    
+                $where = [
+                            'username' => $user,
+                            'password' => $pass
+                        ];
+            
+                $cek = $this->auth->where($where)->countAllResults();
+                if ($cek <= 0) {
+                    session()->setFlashdata('gagal','Username dan Password Anda Salah');
+                    return redirect()->to('/login');
+                }
+                else
+                {
+                    $cek_akun = $this->auth->where($where)->first();
+                    $id_user = $cek_akun["id_user"];
+                    $level = $cek_akun["level"];
+                    $data_session = [
+                        'id_user' => $id_user,
+                        'level' => $level
+                    ];
+                    
+                    session()->set($data_session);
+                    return redirect()->to('/dashboard');
+                }
             }
         }
-        
-        // if ($this->form_validation->run() == FALSE) {
-        //     $this->load->view('auth/login');
-        // } else {
-        //     $user =  $this->input->post("username", TRUE);
-        //     $pass =  $this->input->post("password", TRUE);
-
-        //     $where = [
-        //         'username' => $user,
-        //         'password' => $pass
-        //     ];
-
-        //     $cek = $this->auth->cek_pengguna($where)->num_rows();
-
-        //     if ($cek <= 0) {
-        //         $this->session->set_flashdata('gagal', 'Username dan Password Anda Salah');
-        //         redirect(base_url("auth/login"));
-        //     } else {
-        //         $cek_akun = $this->auth->cek_akun($where)->row_array();
-        //         $id_user = $cek_akun["id_user"];
-        //         $level = $cek_akun["level"];
-
-        //         $data_session = array(
-        //             'id_user' => $id_user,
-        //             'level' => $level
-        //         );
-
-        //         $this->session->set_userdata($data_session);
-
-        //         redirect(base_url("dashboard"));
-        //     }
-        // }
     }
 
     public function logout()

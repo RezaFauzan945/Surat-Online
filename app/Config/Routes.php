@@ -70,7 +70,7 @@ $routes->get('/tracking/tracked/(:any)',    'Tracking::tracked/$1');
 $routes->post('/tracking/cari',         'Tracking::cari');
 $routes->get('/surat_keluar',     'Surat::surat_keluar');
 $routes->get('/surat_pengajuan',  'Surat::pengajuan');
-$routes->get('/surat_keterangan', 'Surat::surat_keterangan');
+$routes->get('/surat_keterangan', 'Surat::surat_keterangan',['filter' => 'authfilter']);
 $routes->get('/surat_masuk','Surat::surat_masuk');
 $routes->get('/surat/tambah_surat_masuk','Surat::tambah_surat_masuk');
 $routes->get('/surat/edit_surat_masuk/(:num)','Surat::edit_surat_masuk/$1');
@@ -88,6 +88,7 @@ $routes->post('/surat_online/ajukan',  'SuratOnline::ajukan');
 $routes->post('/surat_pengajuan/update_status/(:any)',  'Surat::update_status/$1');
 
 $routes->delete('/surat/hapusSuratMasuk/(:num)', 'Surat::hapus_surat_masuk/$1');
+$routes->delete('/surat/hapusPengajuan/(:any)', 'Surat::hapusPengajuan/$1');
 $routes->delete('/surat/hapusSuratKeluar/(:num)', 'Surat::hapus_surat_keluar/$1');
 $routes->delete('/surat/hapusSuratKeterangan/(:num)', 'Surat::hapus_surat_keterangan/$1');
 
