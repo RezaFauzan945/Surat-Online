@@ -7,13 +7,13 @@ use CodeIgniter\Model;
 class SuratMasuk_model extends Model
 {
     protected $table = 'surat_masuk';
-    protected $primaryKey = 'id_surat_masuk' ;
-    protected $allowedFields = [ 
-    'id_surat_masuk',
-    'nama_surat_masuk',
-    'tanggal_surat_masuk',
-    'keterangan_surat_masuk',
-    'file_surat_masuk',
+    protected $primaryKey = 'id_surat_masuk';
+    protected $allowedFields = [
+        'id_surat_masuk',
+        'nama_surat_masuk',
+        'tanggal_surat_masuk',
+        'keterangan_surat_masuk',
+        'file_surat_masuk',
     ];
 
     // public function cek_pengguna($where)

@@ -25,10 +25,10 @@
             </ul>
         </nav> -->
         <p class="copyright pull-right">
-           
-           
-            
-			
+
+
+
+
         </p>
     </div>
 </footer>
@@ -84,7 +84,7 @@
 <!-- <script type="text/javascript">
 	$(document).ready(function () {
 		$('#nik').autocomplete({
-			source: "<?php echo site_url('Penduduk/get_autocomplete');?>",
+			source: "<?php echo site_url('Penduduk/get_autocomplete'); ?>",
 
 			select: function (event, ui) {
 			console.log(ui.item)
@@ -182,165 +182,165 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-<?php if(isset($masuk)) : ?>
-<script>
-    var ctx = document.getElementById('myCharts').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'bar',
+<?php if (isset($masuk)) : ?>
+    <script>
+        var ctx = document.getElementById('myCharts').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'bar',
 
-        // The data for our dataset
-        data: {
-            labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-            datasets: [{
-                label: 'Grafik Surat Masuk',
-                backgroundColor: 'rgb(255, 229, 25)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [<?php foreach ($masuk as $key) {
-                            echo $key . ',';
-                        } ?>],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-
-        // Configuration options go here
-        options: {
-            scales: {
-                xAxes: [{
-                    barPercentage: 0.5,
-                    barThickness: 6,
-                    maxBarThickness: 8,
-                    minBarLength: 2,
-                    gridLines: {
-                        offsetGridLines: true
-                    }
+            // The data for our dataset
+            data: {
+                labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+                datasets: [{
+                    label: 'Grafik Surat Masuk',
+                    backgroundColor: 'rgb(255, 229, 25)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [<?php foreach ($masuk as $key) {
+                                echo $key . ',';
+                            } ?>],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
                 }]
+            },
+
+            // Configuration options go here
+            options: {
+                scales: {
+                    xAxes: [{
+                        barPercentage: 0.5,
+                        barThickness: 6,
+                        maxBarThickness: 8,
+                        minBarLength: 2,
+                        gridLines: {
+                            offsetGridLines: true
+                        }
+                    }]
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 
-<script>
-    var ctx = document.getElementById('myCharts1').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'bar',
+    <script>
+        var ctx = document.getElementById('myCharts1').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'bar',
 
-        // The data for our dataset
-        data: {
-            labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-            datasets: [{
-                label: 'Grafik Surat Keluar',
-                backgroundColor: 'rgb(255, 229, 25)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [<?php foreach ($keluar as $key) {
-                            echo $key . ',';
-                        } ?>],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-
-        // Configuration options go here
-        options: {
-            scales: {
-                xAxes: [{
-                    barPercentage: 0.5,
-                    barThickness: 6,
-                    maxBarThickness: 8,
-                    minBarLength: 2,
-                    gridLines: {
-                        offsetGridLines: true
-                    }
+            // The data for our dataset
+            data: {
+                labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+                datasets: [{
+                    label: 'Grafik Surat Keluar',
+                    backgroundColor: 'rgb(255, 229, 25)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [<?php foreach ($keluar as $key) {
+                                echo $key . ',';
+                            } ?>],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
                 }]
+            },
+
+            // Configuration options go here
+            options: {
+                scales: {
+                    xAxes: [{
+                        barPercentage: 0.5,
+                        barThickness: 6,
+                        maxBarThickness: 8,
+                        minBarLength: 2,
+                        gridLines: {
+                            offsetGridLines: true
+                        }
+                    }]
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 
-<script>
-    var ctx = document.getElementById('myCharts2').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'bar',
+    <script>
+        var ctx = document.getElementById('myCharts2').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'bar',
 
-        // The data for our dataset
-        data: {
-            labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-            datasets: [{
-                label: 'Grafik Surat Keterangan',
-                backgroundColor: 'rgb(255, 229, 25)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [<?php foreach ($keterangan as $key) {
-                            echo $key . ',';
-                        } ?>],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-
-        // Configuration options go here
-        options: {
-            scales: {
-                xAxes: [{
-                    barPercentage: 0.5,
-                    barThickness: 6,
-                    maxBarThickness: 8,
-                    minBarLength: 2,
-                    gridLines: {
-                        offsetGridLines: true
-                    }
+            // The data for our dataset
+            data: {
+                labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+                datasets: [{
+                    label: 'Grafik Surat Keterangan',
+                    backgroundColor: 'rgb(255, 229, 25)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [<?php foreach ($keterangan as $key) {
+                                echo $key . ',';
+                            } ?>],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
                 }]
+            },
+
+            // Configuration options go here
+            options: {
+                scales: {
+                    xAxes: [{
+                        barPercentage: 0.5,
+                        barThickness: 6,
+                        maxBarThickness: 8,
+                        minBarLength: 2,
+                        gridLines: {
+                            offsetGridLines: true
+                        }
+                    }]
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 <?php endif ?>
 
 <!-- <script>

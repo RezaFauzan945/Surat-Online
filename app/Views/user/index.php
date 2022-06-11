@@ -21,7 +21,7 @@
 
                             <?php if (session()->getFlashdata('success') == TRUE) : ?>
                                 <div class="alert alert-success">
-                                    <span><?=session()->getFlashdata('success'); ?></span>
+                                    <span><?= session()->getFlashdata('success'); ?></span>
                                 </div>
                             <?php endif; ?>
                         </div>

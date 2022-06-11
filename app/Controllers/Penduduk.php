@@ -35,16 +35,16 @@ class Penduduk extends BaseController
 
     public function tambah()
     {
-       
-            $data = [
-                'user' => $this->auth->where('id_user', session()->get('id_user'))->first(),
-                'title' => 'Penduduk',
-                'sub_title' => 'Tambah Penduduk',
-                'validation' => \Config\Services::validation(),
-            ];
-            echo view('templates/header', $data);
-            echo view('penduduk/tambah');
-            echo view('templates/footer');
+
+        $data = [
+            'user' => $this->auth->where('id_user', session()->get('id_user'))->first(),
+            'title' => 'Penduduk',
+            'sub_title' => 'Tambah Penduduk',
+            'validation' => \Config\Services::validation(),
+        ];
+        echo view('templates/header', $data);
+        echo view('penduduk/tambah');
+        echo view('templates/footer');
     }
 
     public function edit($nik)
@@ -53,7 +53,7 @@ class Penduduk extends BaseController
             'title' => 'Penduduk',
             'sub_title' => 'Edit Penduduk',
             'validation' => \Config\Services::validation(),
-            'penduduk' => $this->M_Penduduk->where('nik',$nik)->first(),
+            'penduduk' => $this->M_Penduduk->where('nik', $nik)->first(),
             'user' => $this->auth->where('id_user', session()->get('id_user'))->first(),
         ];
         echo view('templates/header', $data);
@@ -63,7 +63,7 @@ class Penduduk extends BaseController
 
     public function create()
     {
-        if(!$this->validate([
+        if (!$this->validate([
             'nik' => 'trim|required',
             'nama' => 'trim|required',
             'no_hp' => 'trim|required',
@@ -73,22 +73,19 @@ class Penduduk extends BaseController
             'alamat' => 'trim|required',
             'rt' => 'trim|required',
             'rw' => 'trim|required',
-        ]))
-        {
+        ])) {
             $validation = \Config\Services::validation();
-            return redirect()->to('/penduduk/tambah')->withInput()->with('validation',$validation);
-        }
-        else
-        {       
+            return redirect()->to('/penduduk/tambah')->withInput()->with('validation', $validation);
+        } else {
             $data = [
-                'nik'       => $this->request->getPost("nik",) ,
-                'nama'      => $this->request->getPost("nama",) ,
-                'tmpt_lhr'  => $this->request->getPost("tmpt_lhr",) ,
-                'tgl_lhr'   => $this->request->getPost("tgl_lhr",) ,
-                'alamat'    => $this->request->getPost("alamat",) ,
-                'no_hp'     => $this->request->getPost("no_hp",) ,
-                'pekerjaan' => $this->request->getPost("pekerjaan",) ,
-                'rw'        => $this->request->getPost("rw",) ,
+                'nik'       => $this->request->getPost("nik",),
+                'nama'      => $this->request->getPost("nama",),
+                'tmpt_lhr'  => $this->request->getPost("tmpt_lhr",),
+                'tgl_lhr'   => $this->request->getPost("tgl_lhr",),
+                'alamat'    => $this->request->getPost("alamat",),
+                'no_hp'     => $this->request->getPost("no_hp",),
+                'pekerjaan' => $this->request->getPost("pekerjaan",),
+                'rw'        => $this->request->getPost("rw",),
                 'rt'        => $this->request->getPost("rt",)
             ];
             $this->M_Penduduk->insert($data);
@@ -99,14 +96,14 @@ class Penduduk extends BaseController
 
     public function delete($nik)
     {
-        $this->M_Penduduk->delete($nik);
+        $this->M_Penduduk->where('nik', $nik)->delete();
         session()->setFlashdata('success', 'Berhasil Dihapus!');
         return redirect()->to('/penduduk')->withInput();
     }
 
     public function update($nik)
     {
-        if(!$this->validate([
+        if (!$this->validate([
             'nik' => 'trim|required',
             'nama' => 'trim|required',
             'no_hp' => 'trim|required',
@@ -116,30 +113,30 @@ class Penduduk extends BaseController
             'alamat' => 'trim|required',
             'rt' => 'trim|required',
             'rw' => 'trim|required',
-        ]))
-        {
+        ])) {
             $validation = \Config\Services::validation();
-            return redirect()->to('/penduduk/edit/'.$nik)->withInput()->with('validation',$validation);
-        }else{
+            return redirect()->to('/penduduk/edit/' . $nik)->withInput()->with('validation', $validation);
+        } else {
             $data = [
                 'nik'       => $this->request->getPost('nik'),
-                'nama'      => $this->request->getPost("nama") ,
-                'tmpt_lhr'  => $this->request->getPost("tmpt_lhr") ,
-                'tgl_lhr'   => $this->request->getPost("tgl_lhr") ,
-                'alamat'    => $this->request->getPost("alamat") ,
-                'no_hp'     => $this->request->getPost("no_hp") ,
-                'pekerjaan' => $this->request->getPost("pekerjaan") ,
-                'rw'        => $this->request->getPost("rw") ,
+                'nama'      => $this->request->getPost("nama"),
+                'tmpt_lhr'  => $this->request->getPost("tmpt_lhr"),
+                'tgl_lhr'   => $this->request->getPost("tgl_lhr"),
+                'alamat'    => $this->request->getPost("alamat"),
+                'no_hp'     => $this->request->getPost("no_hp"),
+                'pekerjaan' => $this->request->getPost("pekerjaan"),
+                'rw'        => $this->request->getPost("rw"),
                 'rt'        => $this->request->getPost("rt")
             ];
-            $this->M_Penduduk->save($data);
+            $this->M_Penduduk->query("UPDATE penduduk SET nik='" . $data['nik'] . "'" . "WHERE nik='" . $nik . "'");
+            $this->M_Penduduk->where('nik', $nik)->save($data);
             session()->setFlashdata('success', 'Berhasil Diupdate!');
-            return redirect()->to('pegawai/edit/'.$nik);
-
+            return redirect()->to('penduduk/');
         }
     }
 
-    function get_autocomplete(){
+    function get_autocomplete()
+    {
         if (isset($_GET['term'])) {
             $result = $this->M_Penduduk->search_nik($_GET['term']);
             if (count($result) > 0) {
@@ -148,10 +145,9 @@ class Penduduk extends BaseController
                         'label'  => $row->nik,
                         'nama' => $row->nama,
                         'no_hp' => $row->no_hp,
-                 );
-                    echo json_encode($arr_result);
+                    );
+                echo json_encode($arr_result);
             }
         }
     }
-
 }

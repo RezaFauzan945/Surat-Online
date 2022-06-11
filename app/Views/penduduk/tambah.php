@@ -54,7 +54,7 @@
 
                             <div class="form-group">
                                 <label class="label-control">Tanggal Lahir</label>
-                                <input type="text" class="form-control datepicker" name="tgl_lhr" id="tgl_lhr" value="10/10/2016" />
+                                <input type="date" class="form-control datepicker" name="tgl_lhr" id="tgl_lhr" value="10/10/2016" />
                             </div>
                             <?php if ($validation->getError('tgl_lhr')) : ?>
                                 <div class='text text-danger mt-2'>

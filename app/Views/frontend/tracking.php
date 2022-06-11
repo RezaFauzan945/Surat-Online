@@ -1,7 +1,7 @@
 <section class="page-section">
 	<div class="container">
 		<?php if (session()->getFlashdata('message') == TRUE) : ?>
-		<?= session()->getFlashdata('message'); ?>
+			<?= session()->getFlashdata('message'); ?>
 		<?php endif; ?>
 		<div class="text-center">
 			<h2 class="section-heading text-uppercase">Tracking Surat Online</h2>
@@ -17,8 +17,7 @@
 						</div>
 						<!--end of col-->
 						<div class="col">
-							<input class="form-control form-control-lg form-control-borderless" type="search"
-								name="trackid" placeholder="Masukkan ID Pengajuan Anda" required>
+							<input class="form-control form-control-lg form-control-borderless" type="search" name="trackid" placeholder="Masukkan ID Pengajuan Anda" required>
 						</div>
 						<!--end of col-->
 						<div class="col-auto">
@@ -26,7 +25,7 @@
 						</div>
 						<!--end of col-->
 					</div>
-					<?= form_close()?>
+					<?= form_close() ?>
 				</div>
 				<!--end of col-->
 			</div>

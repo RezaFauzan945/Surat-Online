@@ -16,36 +16,28 @@ class Auth extends BaseController
 
     public function login()
     {
-        if(session()->get('id_user') != null)
-        {
+        if (session()->get('id_user') != null) {
             return redirect()->to('/dashboard');
-        }
-        else
-        {
-            if(!$this->validate([
+        } else {
+            if (!$this->validate([
                 'username' => 'required',
                 'password' => 'required',
-            ]))
-            {
+            ])) {
                 echo view('auth/login');
-            }
-            else 
-            {
+            } else {
                 $user = $this->request->getPost('username');
                 $pass = $this->request->getPost('password');
-    
+
                 $where = [
-                            'username' => $user,
-                            'password' => $pass
-                        ];
-            
+                    'username' => $user,
+                    'password' => $pass
+                ];
+
                 $cek = $this->auth->where($where)->countAllResults();
                 if ($cek <= 0) {
-                    session()->setFlashdata('gagal','Username dan Password Anda Salah');
+                    session()->setFlashdata('gagal', 'Username dan Password Anda Salah');
                     return redirect()->to('/login');
-                }
-                else
-                {
+                } else {
                     $cek_akun = $this->auth->where($where)->first();
                     $id_user = $cek_akun["id_user"];
                     $level = $cek_akun["level"];
@@ -53,7 +45,7 @@ class Auth extends BaseController
                         'id_user' => $id_user,
                         'level' => $level
                     ];
-                    
+
                     session()->set($data_session);
                     return redirect()->to('/dashboard');
                 }
@@ -64,7 +56,7 @@ class Auth extends BaseController
     public function logout()
     {
         session()->destroy();
-        session()->setFlashdata('gagal','Berhasil Logout');
+        session()->setFlashdata('gagal', 'Berhasil Logout');
         return redirect()->to('/login');
     }
 

@@ -131,7 +131,7 @@
                                             <div class="instruction">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <img width="100%" height="450px;" src="/assets/uploads/foto/<?= $key["foto"]?>">
+                                                        <img width="100%" height="450px;" src="/assets/uploads/foto/<?= $key["foto"] ?>">
                                                     </div>
 
                                                 </div>

@@ -7,6 +7,7 @@ use App\Models\SuratMasuk_model;
 use App\Models\SuratKeluar_model;
 use App\Models\PengajuanSurat_model;
 use App\Models\SuratKeterangan_model;
+use PHPUnit\Framework\Constraint\IsEqual;
 
 // defined('BASEPATH') or exit('No direct script access allowed');
 
@@ -17,7 +18,7 @@ class Surat extends BaseController
     protected $SuratKeluar_model;
     protected $SuratKeterangan_model;
     protected $M_Penduduk;
-    
+
     public function __construct()
     {
         // parent::__construct();
@@ -72,19 +73,17 @@ class Surat extends BaseController
         echo view('surat/edit_surat_masuk');
         echo view('templates/footer');
     }
-    
+
     public function create_surat_masuk()
     {
-        if(!$this->validate([
+        if (!$this->validate([
             'nama_surat' => 'trim|required',
             'tanggal_surat' => 'trim|required',
             'keterangan_surat' => 'trim|required',
             'file_surat' => 'uploaded[file_surat]|ext_in[file_surat,pdf,doc,docx]'
-        ]))
-        {
+        ])) {
             return redirect()->to('/surat/tambah_surat_masuk')->withInput();
-        }
-        else {
+        } else {
             $file = $this->request->getFile('file_surat');
             $data = [
                 'nama_surat_masuk' => $this->request->getPost("nama_surat"),
@@ -101,8 +100,8 @@ class Surat extends BaseController
 
     public function hapus_surat_masuk($id)
     {
-        $data = $this->SuratMasuk_model->where('id_surat_masuk' , $id)->first();
-        unlink('assets/uploads/surat/surat_masuk/'.$data['file_surat_masuk']);
+        $data = $this->SuratMasuk_model->where('id_surat_masuk', $id)->first();
+        unlink('assets/uploads/surat/surat_masuk/' . $data['file_surat_masuk']);
         $this->SuratMasuk_model->delete($id);
         session()->setFlashdata('success', 'Berhasil Dihapus!');
         return redirect()->to('/surat_masuk')->withInput();
@@ -110,17 +109,15 @@ class Surat extends BaseController
 
     public function update_surat_masuk($id)
     {
-        if(!$this->validate([
+        if (!$this->validate([
             'nama_surat' => 'trim|required',
             'tanggal_surat' => 'trim|required',
             'keterangan_surat' => 'trim|required',
             'file_surat' => 'uploaded[file_surat]|ext_in[file_surat,pdf,doc,docx]'
-        ]))
-        {
+        ])) {
             $validation = \Config\Services::validation();
-            return redirect()->to('/surat/edit_surat_masuk/'.$id)->withInput();
-        }
-        else {
+            return redirect()->to('/surat/edit_surat_masuk/' . $id)->withInput();
+        } else {
             $file = $this->request->getFile('file_surat');
             $surat_masuk = $this->SuratMasuk_model->where('id_surat_masuk', $id)->first();
             $data = [
@@ -130,11 +127,11 @@ class Surat extends BaseController
                 'keterangan_surat_masuk' => $this->request->getPost("keterangan_surat"),
                 'file_surat_masuk' => $file->getName(),
             ];
-            unlink('assets/uploads/surat/surat_masuk/'.$surat_masuk['file_surat_masuk']);
+            unlink('assets/uploads/surat/surat_masuk/' . $surat_masuk['file_surat_masuk']);
             $this->SuratMasuk_model->save($data);
             $file->move('assets/uploads/surat/surat_masuk');
             session()->setFlashdata('success', 'Berhasil DiUpdate!');
-            return redirect()->to('/surat/edit_surat_masuk/'.$id);
+            return redirect()->to('/surat/edit_surat_masuk/' . $id);
         }
     }
 
@@ -169,17 +166,15 @@ class Surat extends BaseController
 
     public function create_surat_keluar()
     {
-        if(!$this->validate([
+        if (!$this->validate([
             'nama_surat' => 'trim|required',
             'tanggal_surat' => 'trim|required',
             'keterangan_surat' => 'trim|required',
             'file_surat' => 'uploaded[file_surat]|ext_in[file_surat,pdf,doc,docx]'
-        ]))
-        {
+        ])) {
             $validation = \Config\Services::validation();
             return redirect()->to('/surat/tambah_surat_keluar')->withInput();
-        }
-        else {
+        } else {
             $file = $this->request->getFile('file_surat');
             $data = [
                 'nama_surat_keluar' => $this->request->getPost("nama_surat"),
@@ -188,7 +183,7 @@ class Surat extends BaseController
                 'file_surat_keluar' => $file->getName()
             ];
             $this->SuratKeluar_model->insert($data);
-            $file->move('assets/uploads/surat/surat_keluar');
+            $file->move('assets/uploads/berkas/');
             session()->setFlashdata('success', 'Berhasil Ditambahkan!');
             return redirect()->to('/surat/tambah_surat_keluar');
         }
@@ -212,17 +207,15 @@ class Surat extends BaseController
 
     public function update_surat_keluar($id)
     {
-        if(!$this->validate([
+        if (!$this->validate([
             'nama_surat' => 'trim|required',
             'tanggal_surat' => 'trim|required',
             'keterangan_surat' => 'trim|required',
             'file_surat' => 'uploaded[file_surat]|ext_in[file_surat,pdf,doc,docx]'
-        ]))
-        {
+        ])) {
             $validation = \Config\Services::validation();
-            return redirect()->to('/surat/edit_surat_keluar/'.$id)->withInput();
-        }
-        else {
+            return redirect()->to('/surat/edit_surat_keluar/' . $id)->withInput();
+        } else {
             $file = $this->request->getFile('file_surat');
             $surat_keluar = $this->SuratKeluar_model->where('id_surat_keluar', $id)->first();
             $data = [
@@ -232,20 +225,20 @@ class Surat extends BaseController
                 'keterangan_surat_keluar' => $this->request->getPost("keterangan_surat"),
                 'file_surat_keluar' => $file->getName(),
             ];
-            unlink('assets/uploads/surat/surat_keluar/'.$surat_keluar['file_surat_keluar']);
+            unlink('assets/uploads/berkas/' . $surat_keluar['file_surat_keluar']);
             $this->SuratKeluar_model->save($data);
-            $file->move('assets/uploads/surat/surat_keluar');
+            $file->move('assets/uploads/berkas');
             session()->setFlashdata('success', 'Berhasil DiUpdate!');
-            return redirect()->to('/surat/edit_surat_keluar/'.$id);
+            return redirect()->to('/surat/edit_surat_keluar/' . $id);
         }
     }
-    
-    
+
+
     public function hapus_surat_keluar($id)
     {
-        $data = $this->SuratKeluar_model->where('id_surat_keluar' , $id)->first();
+        $data = $this->SuratKeluar_model->where('id_surat_keluar', $id)->first();
         $this->SuratKeluar_model->delete($id);
-        unlink('assets/uploads/surat/surat_keluar/'.$data['file_surat_keluar']);
+        unlink('assets/uploads/berkas/' . $data['file_surat_keluar']);
         session()->setFlashdata('success', 'Berhasil Dihapus!');
         return redirect()->to('/surat_keluar')->withInput();
     }
@@ -281,17 +274,15 @@ class Surat extends BaseController
 
     public function create_surat_keterangan()
     {
-        if(!$this->validate([
+        if (!$this->validate([
             'nama_surat' => 'trim|required',
             'tanggal_surat' => 'trim|required',
             'keterangan_surat' => 'trim|required',
             'file_surat' => 'uploaded[file_surat]|ext_in[file_surat,pdf,doc,docx]'
-        ]))
-        {
+        ])) {
             $validation = \Config\Services::validation();
             return redirect()->to('/surat/tambah_surat_keterangan')->withInput();
-        }
-        else {
+        } else {
             $file = $this->request->getFile('file_surat');
             $data = [
                 'nama_surat_keterangan' => $this->request->getPost("nama_surat"),
@@ -324,17 +315,15 @@ class Surat extends BaseController
 
     public function update_surat_keterangan($id)
     {
-        if(!$this->validate([
+        if (!$this->validate([
             'nama_surat' => 'trim|required',
             'tanggal_surat' => 'trim|required',
             'keterangan_surat' => 'trim|required',
             'file_surat' => 'uploaded[file_surat]|ext_in[file_surat,pdf,doc,docx]'
-        ]))
-        {
+        ])) {
             $validation = \Config\Services::validation();
-            return redirect()->to('/surat/edit_surat_keterangan/'.$id)->withInput();
-        }
-        else {
+            return redirect()->to('/surat/edit_surat_keterangan/' . $id)->withInput();
+        } else {
             $file = $this->request->getFile('file_surat');
             $surat_keterangan = $this->SuratKeterangan_model->where('id_surat_keterangan', $id)->first();
             $data = [
@@ -343,21 +332,21 @@ class Surat extends BaseController
                 'tanggal_surat_keterangan' => date('Y-m-d', strtotime($this->request->getPost("tanggal_surat"))),
                 'keterangan_surat_keterangan' => $this->request->getPost("keterangan_surat"),
                 'file_surat_keterangan' => $file->getName(),
-                
+
             ];
-            unlink('assets/uploads/surat/surat_keterangan/'.$surat_keterangan['file_surat_keterangan']);
+            unlink('assets/uploads/surat/surat_keterangan/' . $surat_keterangan['file_surat_keterangan']);
             $this->SuratKeterangan_model->save($data);
             $file->move('assets/uploads/surat/surat_keterangan');
             session()->setFlashdata('success', 'Berhasil DiUpdate!');
-            return redirect()->to('/surat/edit_surat_keterangan/'.$id);
+            return redirect()->to('/surat/edit_surat_keterangan/' . $id);
         }
     }
 
     public function hapus_surat_keterangan($id)
     {
-        $data = $this->SuratKeterangan_model->where('id_surat_keterangan' , $id)->first();
+        $data = $this->SuratKeterangan_model->where('id_surat_keterangan', $id)->first();
         $this->SuratKeterangan_model->delete($id);
-        unlink('assets/uploads/surat/surat_keterangan/'.$data['file_surat_keterangan']);
+        unlink('assets/uploads/surat/surat_keterangan/' . $data['file_surat_keterangan']);
         session()->setFlashdata('success', 'Berhasil Dihapus!');
         return redirect()->to('/surat_keterangan')->withInput();
     }
@@ -368,7 +357,7 @@ class Surat extends BaseController
             'user'      => $this->auth->where('id_user', session()->get('id_user'))->first(),
             'title'     => 'Management Surat',
             'sub_title' => 'Pengajuan Surat',
-            'data'      => $this->PengajuanSurat_model->select('*')->join('penduduk','penduduk.nik=pengajuan_surat.NIK')->orderBy("tanggal", "DESC")->findAll(),
+            'data'      => $this->PengajuanSurat_model->select('*')->join('penduduk', 'penduduk.nik=pengajuan_surat.NIK')->orderBy("tanggal", "DESC")->findAll(),
             'status'    => [
                 1 => 'Pending',
                 2 => 'Syarat Tidak Terpenuhi',
@@ -393,7 +382,7 @@ class Surat extends BaseController
                 'SIMB' => 'Izin Mendirikan Bangunan',
             ]
         ];
-       
+
         echo view('templates/header', $data);
         echo view('surat/pengajuan_surat', $data);
         echo view('templates/footer');
@@ -423,32 +412,31 @@ class Surat extends BaseController
         // var_dump($status);
         // die;
 
-        if ($status == 5) {
-            $pSurat = $this->PengajuanSurat_model->where('id', $id)->first();
-            $pndk = $this->M_Penduduk->where('nik', $pSurat['NIK'])->first();
+
+        if ($status['status'] == "5") {
+            $pSurat  = $this->PengajuanSurat_model->where('id', $id)->first();
+            $pndk    =   $this->M_Penduduk->where('nik', $pSurat['NIK'])->first();
             $dateNow = date('Y-m-d');
             // var_dump($pSurat);
             // die;
 
             $save = [
-                'nama_surat_keluar' => '['.$pndk['nama'].'-'.$pndk['nik'].']-Surat '.$options[$pSurat['jenis_surat']],
+                'nama_surat_keluar' => '[' . $pndk['nama'] . '-' . $pndk['nik'] . ']-Surat ' . $options[$pSurat['jenis_surat']],
                 'tanggal_surat_keluar' => date('Y-m-d', strtotime($dateNow)),
-                'keterangan_surat_keluar' => 'ID: '.$pSurat['id']
+                'keterangan_surat_keluar' => 'ID: ' . $pSurat['id'],
+                'file_surat_keluar' => $pSurat['file']
             ];
-
             $this->SuratKeluar_model->insert($save);
-        };
+        }
 
-        $this->PengajuanSurat_model->update($id,$status);
-
+        $this->PengajuanSurat_model->update($id, $status);
         session()->setFlashdata('success', 'Status Pengajuan ID: ' . $id . ' Telah Diupdate!');
-
         return redirect()->to('/surat_pengajuan');
     }
 
     public function hapusPengajuan($id)
     {
-        $data = $this->PengajuanSurat_model->where('id' , $id)->first();
+        $data = $this->PengajuanSurat_model->where('id', $id)->first();
         $this->PengajuanSurat_model->delete($id);
         unlink("assets/uploads/berkas/" . $data['file']);
         session()->setFlashdata('success', 'Berhasil Dihapus!');

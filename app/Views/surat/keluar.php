@@ -107,7 +107,7 @@
                                             <div class="instruction">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <embed type="application/pdf" width="100%" height="450px;" src="/assets/uploads/surat/surat_keluar/<?= $key['file_surat_keluar'] ?>"></embed>
+                                                        <embed type="application/pdf" width="100%" height="450px;" src="assets/uploads/berkas/<?= $key['file_surat_keluar'] ?>"></embed>
                                                     </div>
 
                                                 </div>

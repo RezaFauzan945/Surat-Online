@@ -20,14 +20,14 @@ class Tracking extends BaseController
         $this->Pengajuan_track_model = new Pengajuan_track_model;
         $this->M_Penduduk = new M_Penduduk;
 
-        helper(array('form', 'url','Cookie', 'String'));
+        helper(array('form', 'url', 'Cookie', 'String'));
     }
 
     public function index()
     {
         // $data = $this->dashboard->user();
-        $data =[
-            'profil'=> $this->galeryModel->findAll(),
+        $data = [
+            'profil' => $this->galeryModel->findAll(),
             'title' => 'Tracking',
             'sub_title' => '',
         ];
@@ -35,8 +35,8 @@ class Tracking extends BaseController
         // $data['sm'] = $this->db->get('surat_masuk')->row_array();
         // var_dump($data);
         echo view('frontend/header2', $data);
-        echo view('frontend/tracking',$data);
-        echo view('frontend/footer2',$data);
+        echo view('frontend/tracking', $data);
+        echo view('frontend/footer2', $data);
     }
 
     public function cari()
@@ -45,7 +45,7 @@ class Tracking extends BaseController
         $id = $this->request->getPost('trackid');
         $row = $this->Pengajuan_track_model->find($id);
 
-        $data = [ 
+        $data = [
             'id' => $id,
             'row' => $row
         ];
@@ -54,12 +54,11 @@ class Tracking extends BaseController
         // die;
 
         if ($row === null) {
-            session()->setFlashdata('message', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-bank"></i> Maaf!</h5> ID yang anda masukkan Salah! <b>ID: </b><b>'.$id.'</b> <i>tidak ditemukan</i></div>');
+            session()->setFlashdata('message', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-bank"></i> Maaf!</h5> ID yang anda masukkan Salah! <b>ID: </b><b>' . $id . '</b> <i>tidak ditemukan</i></div>');
             return redirect()->to("/tracking")->withInput();
-        }else {
-            return redirect()->to("/tracking/tracked/".$id);
+        } else {
+            return redirect()->to("/tracking/tracked/" . $id);
         }
-
     }
 
     public function tracked($id)
@@ -67,8 +66,8 @@ class Tracking extends BaseController
         $data = [
             'title' => 'Tracking',
             'sub_title' => '',
-            'row'      => $this->Pengajuan_track_model->select('*')->join('penduduk','penduduk.nik=pengajuan_surat.NIK')->find($id),
-            'options' =>[
+            'row'      => $this->Pengajuan_track_model->select('*')->join('penduduk', 'penduduk.nik=pengajuan_surat.NIK')->find($id),
+            'options' => [
                 'SPKK' => 'Kartu Keluarga',
                 'SPNA' => 'Nikah(N.A)',
                 'SKKL' => 'Kelahiran',
@@ -88,8 +87,7 @@ class Tracking extends BaseController
         // $data['sm'] = $this->db->get('surat_masuk')->row_array();
         // var_dump($data);
         echo view('frontend/header2', $data);
-        echo view('frontend/result',$data);
-        echo view('frontend/footer2',$data);
+        echo view('frontend/result', $data);
+        echo view('frontend/footer2', $data);
     }
-
 }

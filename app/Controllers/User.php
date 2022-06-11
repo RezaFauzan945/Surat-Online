@@ -19,12 +19,9 @@ class User extends BaseController
 
     public function index()
     {
-        if(session()->get('level') != 'administrator')
-        {
+        if (session()->get('level') != 'administrator') {
             return redirect()->to('/dashboard');
-        }
-        else
-        {
+        } else {
             $data = [
                 'title' => 'Management User',
                 'sub_title' => '',
@@ -34,7 +31,7 @@ class User extends BaseController
             echo view('templates/header', $data);
             echo view('user/index', $data);
             echo view('templates/footer');
-        }     
+        }
     }
 
     public function hapus($id)
@@ -57,29 +54,52 @@ class User extends BaseController
         echo view('templates/header', $data);
         echo view('user/tambah');
         echo view('templates/footer');
-
     }
 
     public function create()
     {
-        if(!$this->validate([
-            'username'  => 'required|min_length[8]|trim|is_unique[user.username]',
-            'password'  => 'required|trim|min_length[8]|matches[password2]',
-            'password2' => 'required|trim|min_length[8]|matches[password]',
-            'level'     => 'required',
-        ]))
-        {
+        if (!$this->validate([
+            'username'  => [
+                'rules' => 'required|min_length[8]|trim|is_unique[user.username]',
+                'errors' => [
+                    'required' => '{field} Harus diisi!',
+                    'min_length' => '{field} Minimal 8 karakter',
+                    'is_unique' => 'Username sudah terdaftar'
+                ],
+            ],
+            'password'  => [
+                'rules' => 'required|trim|min_length[8]|matches[password2]',
+                'errors' => [
+                    'required' => '{field} Harus diisi!',
+                    'min_length' => '{field} Minimal 8 karakter',
+                    'matches' => ''
+                ],
+            ],
+            'password2'  => [
+                'rules' => 'required|trim|min_length[8]|matches[password]',
+                'errors' => [
+                    'required' => '{field} Harus diisi!',
+                    'min_length' => '{field} Minimal 8 karakter',
+                    'matches'    => 'Pasword Tidak Sama'
+                ],
+            ],
+            'level'  => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Harus diisi!',
+                ],
+            ],
+        ])) {
             $validation = \Config\Services::validation();
             return redirect()->to('/user/tambah')->withInput();
-        } 
-        else {
+        } else {
 
             $data = [
                 'username' =>  $this->request->getPost("username"),
                 'password' =>  $this->request->getPost("password"),
                 'level'    =>  $this->request->getPost("level"),
             ];
-            
+
             $this->User_model->insert($data);
 
             session()->setFlashdata('success', 'Berhasil Ditambahkan!');
@@ -107,17 +127,15 @@ class User extends BaseController
 
     public function update($id)
     {
-        if(!$this->validate([
-            'username'  => 'required|min_length[8]|trim|is_unique[user.username]',
+        if (!$this->validate([
+            'username'  => 'required|min_length[8]|trim|',
             'password'  => 'required|trim|min_length[8]|matches[password2]',
             'password2' => 'required|trim|min_length[8]|matches[password]',
             'level'     => 'required',
-        ]))
-        {
+        ])) {
             $validation = \Config\Services::validation();
-            return redirect()->to('/user/edit/'.$id)->withInput();
-        } 
-        else {
+            return redirect()->to('/user/edit/' . $id)->withInput();
+        } else {
 
             $data = [
                 'id_user'  => $id,
@@ -125,11 +143,11 @@ class User extends BaseController
                 'password' =>  $this->request->getPost("password"),
                 'level'    =>  $this->request->getPost("level"),
             ];
-            
+
             $this->User_model->save($data);
 
             session()->setFlashdata('success', 'Berhasil DiUpdate!');
-            return redirect()->to('/user/edit/'.$id);
+            return redirect()->to('/user/edit/' . $id);
         }
     }
     public function delete($id)

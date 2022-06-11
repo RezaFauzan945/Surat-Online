@@ -29,7 +29,7 @@
                         <p class="category">Surat Masuk Dalam Bulan</p>
                     </div>
                     <div class="card-footer">
-                        
+
                     </div>
                 </div>
             </div>
@@ -53,10 +53,11 @@
                         </div>
                         <h4 class="card-title">Surat Keluar</h4>
                         <p class="category">
-                            <span class="text-success"></span> Surat Keluar Dalam Bulan</p>
+                            <span class="text-success"></span> Surat Keluar Dalam Bulan
+                        </p>
                     </div>
                     <div class="card-footer">
-                       
+
                     </div>
                 </div>
             </div>
@@ -82,77 +83,77 @@
                         <p class="category">Surat Keterangan Dalam Bulan</p>
                     </div>
                     <div class="card-footer">
-                      
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="orange">
-                        <i class="material-icons">mark_email_read</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">Surat Masuk</p>
-                        <h3 class="card-title"><?= $jumlah_surat_masuk ?></h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons text-primary">info</i>
-                            <a href="#">Jumlah Surat Masuk</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="rose">
-                        <i class="material-icons">mark_email_unread</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">Surat Keluar</p>
-                        <h3 class="card-title"><?= $jumlah_surat_keluar ?></h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">info</i> Jumlah Surat Keluar
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="green">
-                        <i class="material-icons">mail</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">Surat Keterangan</p>
-                        <h3 class="card-title"><?= $jumlah_surat_keterangan ?></h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">info</i> Jumlah Surat Keterangan
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="blue">
-                        <i class="fa fa-user"></i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">User</p>
-                        <h3 class="card-title"><?= $jumlah_user ?></h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">info</i> Jumlah User
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header" data-background-color="orange">
+                            <i class="material-icons">mark_email_read</i>
+                        </div>
+                        <div class="card-content">
+                            <p class="category">Surat Masuk</p>
+                            <h3 class="card-title"><?= $jumlah_surat_masuk ?></h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons text-primary">info</i>
+                                <a href="#">Jumlah Surat Masuk</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header" data-background-color="rose">
+                            <i class="material-icons">mark_email_unread</i>
+                        </div>
+                        <div class="card-content">
+                            <p class="category">Surat Keluar</p>
+                            <h3 class="card-title"><?= $jumlah_surat_keluar ?></h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">info</i> Jumlah Surat Keluar
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header" data-background-color="green">
+                            <i class="material-icons">mail</i>
+                        </div>
+                        <div class="card-content">
+                            <p class="category">Surat Keterangan</p>
+                            <h3 class="card-title"><?= $jumlah_surat_keterangan ?></h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">info</i> Jumlah Surat Keterangan
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header" data-background-color="blue">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="card-content">
+                            <p class="category">User</p>
+                            <h3 class="card-title"><?= $jumlah_user ?></h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">info</i> Jumlah User
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>

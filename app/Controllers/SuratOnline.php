@@ -55,7 +55,7 @@ class SuratOnline extends BaseController
             ],
             'validation' => \Config\Services::validation()
         ];
-        
+
         echo view('frontend/header2', $data);
         echo view('frontend/s_online', $data);
         echo view('frontend/footer2', $data);
@@ -75,7 +75,7 @@ class SuratOnline extends BaseController
         $no_hp       = $this->request->getPost('no_hp');
         $jenis_surat = $this->request->getPost('jenis_surat');
 
-        $ceknik = $this->M_Penduduk->where('nik',$nik)->countAllResults();
+        $ceknik = $this->M_Penduduk->where('nik', $nik)->countAllResults();
 
         if ($ceknik <= 0) {
             $save = [
@@ -93,7 +93,7 @@ class SuratOnline extends BaseController
         $rid = uniqid($jenis_surat, TRUE);
         $rid2 = str_replace('.', '', $rid);
         $rid3 = substr(str_shuffle($rid2), 0, 3);
-        
+
         $cc = $this->Pengajuan_track_model->countAllResults() + 1;
         $count = str_pad($cc, 3, STR_PAD_LEFT);
         $id = $jenis_surat . "-";
@@ -104,33 +104,33 @@ class SuratOnline extends BaseController
         $randomize = $d + $y + $mnth + $s;
         $id = $id . $rid3 . $randomize . $count . $y;
 
-        if(!$this->validate([
-            'nik'  =>[
+        if (!$this->validate([
+            'nik'  => [
                 'rules' => 'required|trim|is_natural_no_zero|min_length[16]',
-                'errors' =>[
+                'errors' => [
                     'required' => '{field} Harus diisi!',
                     'is_natural_no_zero' => '{field} Tolong hanya isi dengan angka Yang Benar!',
-                    'min_length'=> '{field} minimal 16 Angka'
+                    'min_length' => '{field} minimal 16 Angka'
                 ],
             ],
-            'nama'  =>[
+            'nama'  => [
                 'rules' => 'required|trim|alpha_space',
-                'errors' =>[
+                'errors' => [
                     'required' => '{field} harus diisi!',
                     'alpha_space' => '{field} Tolong Isi hanya dengan huruf dan nama yang benar'
                 ],
             ],
-            'no_hp'  =>[
+            'no_hp'  => [
                 'rules' => 'required|trim|is_natural|min_length[10]',
-                'errors' =>[
+                'errors' => [
                     'required' => 'No Handphone harus diisi!',
                     'is_natural' => 'No Handphone Tolong hanya isi dengan angka Yang Benar!',
-                    'min_length'=> 'No Handphone minimal 10 Angka'
+                    'min_length' => 'No Handphone minimal 10 Angka'
                 ],
             ],
-            'jenis_surat'  =>[
+            'jenis_surat'  => [
                 'rules' => 'required|trim',
-                'errors' =>[
+                'errors' => [
                     'required' => 'Jenis Surat harus dipilih!'
                 ],
             ],
@@ -140,13 +140,10 @@ class SuratOnline extends BaseController
                     'uploaded' => '{field} harus diunggah dan pastikan sesuai dengan persyaratan sesuai jenis surat!',
                     'max_size' => '{field} melebihi 5MB!'
                 ],
-            ],   
-        ]))
-        {
+            ],
+        ])) {
             return redirect()->to('/surat_online')->withInput();
-        }
-        else
-        {
+        } else {
             $file = $this->request->getFile('file');
             $namafile = substr($file->getName(), -7);
             $fileName = $jenis_surat . uniqid() . $namafile;
@@ -164,7 +161,7 @@ class SuratOnline extends BaseController
                 'status' => $status[1]
             ];
             $this->Pengajuan_track_model->insert($data);
-            $file->move('assets/uploads/berkas/' , $fileName);
+            $file->move('assets/uploads/berkas/', $fileName);
             session()->setFlashdata('success', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Selamat!</h5> Berhasil Mengajukan Surat! Berikut <b>ID</b> anda: <b>' . $id . '</b></div>');
             return redirect()->to('/surat_online');
         }

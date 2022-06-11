@@ -52,7 +52,7 @@
                                             <td><?= $key['tgl_lhr']; ?></td>
                                             <td><?= $key['alamat']; ?></td>
                                             <td><?= $key['pekerjaan']; ?></td>
-                                            <td><?= $key['rw'].'/'.$key['rt']; ?></td>
+                                            <td><?= $key['rw'] . '/' . $key['rt']; ?></td>
                                             <td><?= $key['no_hp']; ?></td>
                                             <td class="text-right">
 
@@ -78,7 +78,7 @@
                                         </div>
 
                                         <form method="post" action="/penduduk/hapus/<?= $key['nik']; ?>">
-                                        <?= csrf_field() ?>
+                                            <?= csrf_field() ?>
                                             <input type="hidden" name="_method" value="DELETE">
                                             <div class="modal-body text-center">
                                                 <h5>Apakah anda yakin untuk menghapus penduduk ini? </h5>

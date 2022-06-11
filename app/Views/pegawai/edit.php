@@ -24,7 +24,7 @@
 
                             <div class="form-group">
                                 <label class="label-control">Nama</label>
-                                <input class="form-control" name="nama" id="nama" type="text" value="<?= $pegawai['nama']; ?>" />
+                                <input required class="form-control" name="nama" id="nama" type="text" value="<?= $pegawai['nama']; ?>" />
                             </div>
                             <?php if ($validation->getError('nama')) : ?>
                                 <div class='text text-danger mt-2'>
@@ -34,7 +34,7 @@
 
                             <div class="form-group">
                                 <label class="label-control">NIP</label>
-                                <input class="form-control" name="nip" id="nip" type="text" value="<?= $pegawai['nip']; ?>" />
+                                <input required class="form-control" name="nip" id="nip" type="text" value="<?= $pegawai['nip']; ?>" />
                             </div>
                             <?php if ($validation->getError('nip')) : ?>
                                 <div class='text text-danger mt-2'>
@@ -44,7 +44,7 @@
 
                             <div class="form-group">
                                 <label class="label-control">Tempat Lahir</label>
-                                <input class="form-control" name="tempat_lahir" id="tempat_lahir" type="text" value="<?= $pegawai['tempat_lahir']; ?>" />
+                                <input required class="form-control" name="tempat_lahir" id="tempat_lahir" type="text" value="<?= $pegawai['tempat_lahir']; ?>" />
                             </div>
                             <?php if ($validation->getError('tempat_lahir')) : ?>
                                 <div class='text text-danger mt-2'>
@@ -54,7 +54,7 @@
 
                             <div class="form-group">
                                 <label class="label-control">Tanggal Lahir</label>
-                                <input type="text" class="form-control datepicker" name="tanggal_lahir" id="tanggal_lahir" value="<?= $pegawai['tanggal_lahir']; ?>" />
+                                <input required type="date" class="form-control datepicker" name="tanggal_lahir" id="tanggal_lahir" value="<?= $pegawai['tanggal_lahir']; ?>" />
                             </div>
                             <?php if ($validation->getError('tanggal_lahir')) : ?>
                                 <div class='text text-danger mt-2'>
@@ -64,7 +64,7 @@
 
                             <div class="form-group">
                                 <label class="label-control">Alamat</label>
-                                <input class="form-control" name="alamat" id="alamat" type="text" value="<?= $pegawai['alamat']; ?>" />
+                                <input required class="form-control" name="alamat" id="alamat" type="text" value="<?= $pegawai['alamat']; ?>" />
                             </div>
                             <?php if ($validation->getError('alamat')) : ?>
                                 <div class='text text-danger mt-2'>
@@ -98,7 +98,7 @@
 
                             <div class="form-group">
                                 <label class="label-control">No. Hp</label>
-                                <input class="form-control" name="no_hp" id="no_hp" type="text" value="<?= $pegawai['no_hp']; ?>" />
+                                <input required class="form-control" name="no_hp" id="no_hp" type="text" value="<?= $pegawai['no_hp']; ?>" />
                             </div>
                             <?php if ($validation->getError('no_hp')) : ?>
                                 <div class='text text-danger mt-2'>
@@ -108,7 +108,7 @@
 
                             <div class="form-group">
                                 <label class="label-control">Jabatan</label>
-                                <input class="form-control" name="jabatan" id="jabatan" type="text" value="<?= $pegawai['jabatan']; ?>" />
+                                <input required class="form-control" name="jabatan" id="jabatan" type="text" value="<?= $pegawai['jabatan']; ?>" />
                             </div>
                             <?php if ($validation->getError('jabatan')) : ?>
                                 <div class='text text-danger mt-2'>
@@ -118,7 +118,7 @@
 
                             <div class="form-group">
                                 <label class="label-control">Pendidikan</label>
-                                <input class="form-control" name="pendidikan" id="pendidikan" type="text" value="<?= $pegawai['pendidikan']; ?>" />
+                                <input required class="form-control" name="pendidikan" id="pendidikan" type="text" value="<?= $pegawai['pendidikan']; ?>" />
                             </div>
                             <?php if ($validation->getError('pendidikan')) : ?>
                                 <div class='text text-danger mt-2'>

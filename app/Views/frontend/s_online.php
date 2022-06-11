@@ -35,7 +35,7 @@
                     <div class="col-lg-6 mt-2">
                         <div class="form-group">
                             <label class="label-control" for="no_hp">No Hp *</label>
-                            <input class="form-control" name="no_hp" id="no_hp" required type="text" minlength="10" maxlength="16"  placeholder='Silahkan masukkan No Hp anda' value="<?= old('no_hp'); ?>" />
+                            <input class="form-control" name="no_hp" id="no_hp" required type="text" minlength="10" maxlength="16" placeholder='Silahkan masukkan No Hp anda' value="<?= old('no_hp'); ?>" />
                         </div>
                         <?php if ($validation->getError('no_hp')) : ?>
                             <div class='text text-danger mt-2'>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-lg-6 mt-2">
                         <label for="jenis">Pilih Jenis Surat *</label>
-                        <?= form_dropdown('jenis_surat', $options, '', ['id' => 'jenis', 'class' => 'form-control', "required" => "required",'values' => old('jenis_surat')]); ?>
+                        <?= form_dropdown('jenis_surat', $options, '', ['id' => 'jenis', 'class' => 'form-control', "required" => "required", 'values' => old('jenis_surat')]); ?>
                         <?php if ($validation->getError('jenis_surat')) : ?>
                             <div class='text text-danger mt-2'>
                                 <?= $error = $validation->getError('jenis_surat'); ?>

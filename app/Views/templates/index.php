@@ -156,7 +156,8 @@
                         </div>
                         <h4 class="card-title">Daily Sales</h4>
                         <p class="category">
-                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.
+                        </p>
                     </div>
                     <div class="card-footer">
                         <div class="stats">

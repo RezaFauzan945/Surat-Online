@@ -28,8 +28,8 @@ class Home extends BaseController
             'sub_title' => ''
         ];
 
-        echo view('frontend/header',$judul);
-        echo view('frontend/home',$data);
-        echo view('frontend/footer',$data);
+        echo view('frontend/header', $judul);
+        echo view('frontend/home', $data);
+        echo view('frontend/footer', $data);
     }
 }

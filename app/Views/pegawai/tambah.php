@@ -27,9 +27,9 @@
                                 <input class="form-control" name="nama" id="nama" type="text" value="<?= old('nama'); ?>" />
                             </div>
                             <?php if ($validation->getError('nama')) : ?>
-                                    <div class='text text-danger mt-2'>
-                                        <?= $error = $validation->getError('nama'); ?>
-                                    </div>
+                                <div class='text text-danger mt-2'>
+                                    <?= $error = $validation->getError('nama'); ?>
+                                </div>
                             <?php endif ?>
 
                             <div class="form-group">
@@ -37,9 +37,9 @@
                                 <input class="form-control" name="nip" id="nip" type="text" value="<?= old('nip'); ?>" />
                             </div>
                             <?php if ($validation->getError('nip')) : ?>
-                                    <div class='text text-danger mt-2'>
-                                        <?= $error = $validation->getError('nip'); ?>
-                                    </div>
+                                <div class='text text-danger mt-2'>
+                                    <?= $error = $validation->getError('nip'); ?>
+                                </div>
                             <?php endif ?>
 
                             <div class="form-group">
@@ -47,19 +47,19 @@
                                 <input class="form-control" name="tempat_lahir" id="tempat_lahir" type="text" value="<?= old('tempat_lahir'); ?>" />
                             </div>
                             <?php if ($validation->getError('tempat_lahir')) : ?>
-                                    <div class='text text-danger mt-2'>
-                                        <?= $error = $validation->getError('tempat_lahir'); ?>
-                                    </div>
+                                <div class='text text-danger mt-2'>
+                                    <?= $error = $validation->getError('tempat_lahir'); ?>
+                                </div>
                             <?php endif ?>
 
                             <div class="form-group">
                                 <label class="label-control">Tanggal Lahir</label>
-                                <input type="text" class="form-control datepicker" name="tanggal_lahir" id="tanggal_lahir" value="10/10/2016" />
+                                <input type="date" class="form-control datepicker" name="tanggal_lahir" id="tanggal_lahir" value="10/10/2016" />
                             </div>
                             <?php if ($validation->getError('tanggal_lahir')) : ?>
-                                    <div class='text text-danger mt-2'>
-                                        <?= $error = $validation->getError('tanggal_lahir'); ?>
-                                    </div>
+                                <div class='text text-danger mt-2'>
+                                    <?= $error = $validation->getError('tanggal_lahir'); ?>
+                                </div>
                             <?php endif ?>
 
                             <div class="form-group">
@@ -67,9 +67,9 @@
                                 <input class="form-control" name="alamat" id="alamat" type="text" value="<?= old('alamat'); ?>" />
                             </div>
                             <?php if ($validation->getError('alamat')) : ?>
-                                    <div class='text text-danger mt-2'>
-                                        <?= $error = $validation->getError('alamat'); ?>
-                                    </div>
+                                <div class='text text-danger mt-2'>
+                                    <?= $error = $validation->getError('alamat'); ?>
+                                </div>
                             <?php endif ?>
 
                             <div class="form-group">
@@ -91,19 +91,19 @@
                             </div>
 
                             <?php if ($validation->getError('foto')) : ?>
-                                    <div class='text text-danger mt-2'>
-                                        <?= $error = $validation->getError('foto'); ?>
-                                    </div>
+                                <div class='text text-danger mt-2'>
+                                    <?= $error = $validation->getError('foto'); ?>
+                                </div>
                             <?php endif ?>
-                            
+
                             <div class="form-group">
                                 <label class="label-control">No. Hp</label>
                                 <input class="form-control" name="no_hp" id="no_hp" type="text" value="<?= old('no_hp'); ?>" />
                             </div>
                             <?php if ($validation->getError('no_hp')) : ?>
-                                    <div class='text text-danger mt-2'>
-                                        <?= $error = $validation->getError('no_hp'); ?>
-                                    </div>
+                                <div class='text text-danger mt-2'>
+                                    <?= $error = $validation->getError('no_hp'); ?>
+                                </div>
                             <?php endif ?>
 
                             <div class="form-group">
@@ -111,9 +111,9 @@
                                 <input class="form-control" name="jabatan" id="jabatan" type="text" value="<?= old('jabatan'); ?>" />
                             </div>
                             <?php if ($validation->getError('jabatan')) : ?>
-                                    <div class='text text-danger mt-2'>
-                                        <?= $error = $validation->getError('jabatan'); ?>
-                                    </div>
+                                <div class='text text-danger mt-2'>
+                                    <?= $error = $validation->getError('jabatan'); ?>
+                                </div>
                             <?php endif ?>
 
                             <div class="form-group">
@@ -121,9 +121,9 @@
                                 <input class="form-control" name="pendidikan" id="pendidikan" type="text" value="<?= old('pendidikan'); ?>" />
                             </div>
                             <?php if ($validation->getError('pendidikan')) : ?>
-                                    <div class='text text-danger mt-2'>
-                                        <?= $error = $validation->getError('pendidikan'); ?>
-                                    </div>
+                                <div class='text text-danger mt-2'>
+                                    <?= $error = $validation->getError('pendidikan'); ?>
+                                </div>
                             <?php endif ?>
 
 

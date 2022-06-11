@@ -51,9 +51,9 @@
 									<?php
 
 									// $data = $this->db->get_where('user', ['id_user' => $this->session->userdata('id_user')])->row_array();
-									
+
 									?>
-									<?= ucfirst( $user['username']); ?>
+									<?= ucfirst($user['username']); ?>
 									<b class="caret"></b>
 								</span>
 							</a>
@@ -204,28 +204,28 @@
                                     <?= 'active'; ?>
                                 <?php endif; ?>
                                 ">
-									
+
 								</li>
 								<li class="
                                 <?php if ($sub_title == 'Struktur Linmas') : ?>
                                     <?= 'active'; ?>
                                 <?php endif; ?>
                                 ">
-									
+
 								</li>
 								<li class="
                                 <?php if ($sub_title == 'Struktur Pemuda Kelurahan') : ?>
                                     <?= 'active'; ?>
                                 <?php endif; ?>
                                 ">
-									
+
 								</li>
 								<li class="
                                 <?php if ($sub_title == 'Ketua RT & RW') : ?>
                                     <?= 'active'; ?>
                                 <?php endif; ?>
                                 ">
-									
+
 								</li>
 							</ul>
 						</div>
